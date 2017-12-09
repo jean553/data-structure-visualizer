@@ -26,3 +26,4 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # Input
 SOURCES += src/*
 QT += widgets
+CONFIG += c++14
