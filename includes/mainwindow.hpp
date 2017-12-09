@@ -5,12 +5,17 @@
 
 class MainWindow : public QMainWindow
 {
+
 public:
 
     /**
      * @brief main window constructor
      */
     MainWindow();
+
+    MainWindow(const MainWindow&) = delete;
+
+    MainWindow operator=(const MainWindow&) = delete;
 };
 
 #endif
