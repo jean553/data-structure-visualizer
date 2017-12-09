@@ -1,0 +1,3 @@
+[submodule "c-data-structures"]
+	path = c-data-structures
+	url = git@github.com:jean553/c-data-structures.git
