@@ -7,9 +7,9 @@ class MainWindow::Impl {
 
 public:
 
-    QMenu* fileMenu;
+    QMenu* linkedListMenu;
 
-    QAction* exitAction;
+    QAction* createAction;
 };
 
 /**
@@ -24,10 +24,10 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         WINDOW_HEIGHT
     );
 
-    impl->exitAction = new QAction("Exit");
+    impl->createAction = new QAction("Create");
 
-    impl->fileMenu = menuBar()->addMenu("File");
-    impl->fileMenu->addAction(impl->exitAction);
+    impl->linkedListMenu = menuBar()->addMenu("Linked list");
+    impl->linkedListMenu->addAction(impl->createAction);
 }
 
 /**
