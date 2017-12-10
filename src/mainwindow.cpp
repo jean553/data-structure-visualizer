@@ -4,6 +4,7 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QGraphicsView>
+#include <QGraphicsTextItem>
 
 class MainWindow::Impl
 {
@@ -31,20 +32,19 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         WINDOW_HEIGHT
     );
 
+    impl->scene = new Scene();
+    impl->view = new QGraphicsView(impl->scene);
+
     impl->createAction = new QAction("Create");
     connect(
         impl->createAction,
         SIGNAL(triggered()),
-        this,
+        impl->scene,
         SLOT(createLinkedList())
     );
 
     impl->linkedListMenu = menuBar()->addMenu("Linked list");
     impl->linkedListMenu->addAction(impl->createAction);
-
-    impl->scene = new Scene();
-
-    impl->view = new QGraphicsView(impl->scene);
 
     setCentralWidget(impl->view);
 }
@@ -53,10 +53,3 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
  *
  */
 MainWindow::~MainWindow() = default;
-
-/**
- *
- */
-void MainWindow::createLinkedList()
-{
-}
