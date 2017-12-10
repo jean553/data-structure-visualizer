@@ -7,6 +7,7 @@
 
 class MainWindow : public QMainWindow
 {
+    Q_OBJECT
 
 public:
 
@@ -22,6 +23,13 @@ public:
      * @brief default destructor
      */
     ~MainWindow();
+
+private slots:
+
+    /**
+     * @brief calls when the linked list menu create action is clicked
+     */
+    void createLinkedList();
 
 private:
 

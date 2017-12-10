@@ -32,6 +32,12 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     );
 
     impl->createAction = new QAction("Create");
+    connect(
+        impl->createAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(createLinkedList())
+    );
 
     impl->linkedListMenu = menuBar()->addMenu("Linked list");
     impl->linkedListMenu->addAction(impl->createAction);
@@ -47,3 +53,10 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
  *
  */
 MainWindow::~MainWindow() = default;
+
+/**
+ *
+ */
+void MainWindow::createLinkedList()
+{
+}

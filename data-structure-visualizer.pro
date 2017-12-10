@@ -4,7 +4,9 @@
 
 TEMPLATE = app
 TARGET = data-structure-visualizer
-INCLUDEPATH += includes/
+INCLUDEPATH = includes/
+HEADERS = includes/mainwindow.hpp \
+    includes/scene.hpp
 
 release:DESTDIR = release
 release:OBJECTS_DIR = release
@@ -24,6 +26,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-SOURCES += src/*
+SOURCES += src/main.cpp \
+    src/mainwindow.cpp \
+    src/scene.cpp
 QT += widgets
 CONFIG += c++14
