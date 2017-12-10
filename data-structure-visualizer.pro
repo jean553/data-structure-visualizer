@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = data-structure-visualizer
 INCLUDEPATH = includes/
 HEADERS = includes/mainwindow.hpp \
+    includes/linkedlistitem.hpp \
     includes/scene.hpp
 
 release:DESTDIR = release
@@ -28,6 +29,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # Input
 SOURCES += src/main.cpp \
     src/mainwindow.cpp \
+    src/linkedlistitem.cpp \
     src/scene.cpp
 QT += widgets
 CONFIG += c++14
