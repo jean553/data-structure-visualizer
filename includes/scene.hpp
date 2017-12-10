@@ -19,8 +19,10 @@ public slots:
     /**
      * @brief called from the linked list menu creation action;
      * it creates a new linked list node on the scene
+     *
+     * @param data the data to insert into the first node
      */
-    void createLinkedList();
+    void createLinkedList(const int& data);
 };
 
 #endif
