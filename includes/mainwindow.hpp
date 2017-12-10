@@ -24,6 +24,14 @@ public:
      */
     ~MainWindow();
 
+private slots:
+
+    /**
+     * @brief called by the linked list menu create action;
+     * display the popup that asks for the linked list first value
+     */
+    void createLinkedList();
+
 private:
 
     class Impl;

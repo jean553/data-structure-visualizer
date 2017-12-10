@@ -11,9 +11,8 @@ Scene::Scene()
 /**
  *
  */
-void Scene::createLinkedList()
+void Scene::createLinkedList(const int& data)
 {
-    /* TODO: 0 by default for now, the user should choose */
-    LinkedListItem* item = new LinkedListItem(0);
+    LinkedListItem* item = new LinkedListItem(data);
     addItem(item);
 }

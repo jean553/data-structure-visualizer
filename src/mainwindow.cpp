@@ -5,6 +5,7 @@
 #include <QMenu>
 #include <QGraphicsView>
 #include <QGraphicsTextItem>
+#include <QInputDialog>
 
 class MainWindow::Impl
 {
@@ -39,7 +40,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     connect(
         impl->createAction,
         SIGNAL(triggered()),
-        impl->scene,
+        this,
         SLOT(createLinkedList())
     );
 
@@ -53,3 +54,32 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
  *
  */
 MainWindow::~MainWindow() = default;
+
+/**
+ *
+ */
+void MainWindow::createLinkedList()
+{
+    bool set {false};
+
+    constexpr int DEFAULT_VALUE {0};
+    constexpr int MINIMUM_VALUE {0};
+    constexpr int MAXIMUM_VALUE {100};
+    constexpr int STEP {1};
+    const int data = QInputDialog::getInt(
+        this,
+        "Create linked list",
+        "Linked list first node data:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    impl->scene->createLinkedList(data);
+}
