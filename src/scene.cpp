@@ -13,6 +13,7 @@ Scene::Scene()
  */
 void Scene::createLinkedList()
 {
-    LinkedListItem* item = new LinkedListItem();
+    /* TODO: 0 by default for now, the user should choose */
+    LinkedListItem* item = new LinkedListItem(0);
     addItem(item);
 }

@@ -3,6 +3,8 @@
 
 #include <QGraphicsTextItem>
 
+#include <memory>
+
 class LinkedListItem : public QGraphicsTextItem
 {
     Q_OBJECT
@@ -11,8 +13,15 @@ public:
 
     /**
      * @brief default constructor
+     *
+     * @param data the data of the node
      */
-    LinkedListItem();
+    LinkedListItem(const int& data);
+
+    /**
+     * @brief default destructor
+     */
+    ~LinkedListItem();
 
     /**
      * @brief overrides the paint method that is called when item is displayed;
@@ -27,6 +36,11 @@ public:
         const QStyleOptionGraphicsItem* option,
         QWidget* widget
     );
+
+private:
+
+    class Impl;
+    std::unique_ptr<Impl> impl;
 };
 
 #endif
