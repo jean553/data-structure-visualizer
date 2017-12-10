@@ -24,13 +24,6 @@ public:
      */
     ~MainWindow();
 
-private slots:
-
-    /**
-     * @brief calls when the linked list menu create action is clicked
-     */
-    void createLinkedList();
-
 private:
 
     class Impl;

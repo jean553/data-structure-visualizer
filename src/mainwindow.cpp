@@ -53,10 +53,3 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
  *
  */
 MainWindow::~MainWindow() = default;
-
-/**
- *
- */
-void MainWindow::createLinkedList()
-{
-}
