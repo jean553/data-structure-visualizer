@@ -6,9 +6,30 @@
 /**
  *
  */
-LinkedListItem::LinkedListItem()
+class LinkedListItem::Impl
+{
+
+public:
+
+    Impl(const int& data) : data(data)
+    {
+    }
+
+    const int data;
+};
+
+/**
+ *
+ */
+LinkedListItem::LinkedListItem(const int& data) :
+    impl(std::make_unique<Impl>(data))
 {
 }
+
+/**
+ *
+ */
+LinkedListItem::~LinkedListItem() = default;
 
 /**
  *
@@ -32,8 +53,7 @@ void LinkedListItem::paint(
     painter->setPen(Qt::black);
     painter->drawRect(option->rect);
 
-    /* TODO: update with the linked list node value */
-    setPlainText("Linked list node");
+    setPlainText(QString::number(impl->data));
 
     /* sends the modified parameters to the paint() method
        that shoud have been called by the view */
