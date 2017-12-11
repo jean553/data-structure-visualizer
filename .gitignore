@@ -2,7 +2,3 @@
 Makefile
 debug/
 *.swp
-moc_mainwindow.cpp
-moc_scene.cpp
-moc_linkedlistitem.cpp
-moc_predefs.h
