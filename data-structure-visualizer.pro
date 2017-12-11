@@ -4,7 +4,8 @@
 
 TEMPLATE = app
 TARGET = data-structure-visualizer
-INCLUDEPATH = includes/
+INCLUDEPATH += includes/ \
+    c-data-structures/linked_list/
 HEADERS = includes/mainwindow.hpp \
     includes/linkedlistitem.hpp \
     includes/scene.hpp
@@ -35,3 +36,4 @@ SOURCES += src/main.cpp \
     src/scene.cpp
 QT += widgets
 CONFIG += c++14
+LIBS += -L"c-data-structures/build/linked_list/" -llinked_list
