@@ -1,12 +1,27 @@
 #include "scene.hpp"
 #include "linkedlistitem.hpp"
 
+#include "linked_list.h"
+
+class Scene::Impl
+{
+
+public:
+
+    LinkedList list;
+};
+
 /**
  *
  */
-Scene::Scene()
+Scene::Scene() : impl(std::make_unique<Impl>())
 {
 }
+
+/**
+ *
+ */
+Scene::~Scene() = default;
 
 /**
  *

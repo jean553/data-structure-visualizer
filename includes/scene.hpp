@@ -3,6 +3,8 @@
 
 #include <QGraphicsScene>
 
+#include <memory>
+
 class Scene : public QGraphicsScene
 {
     Q_OBJECT
@@ -14,6 +16,11 @@ public:
      */
     Scene();
 
+    /**
+     * @brief default destructor
+     */
+    ~Scene();
+
 public slots:
 
     /**
@@ -23,6 +30,11 @@ public slots:
      * @param data the data to insert into the first node
      */
     void createLinkedList(const int& data);
+
+private:
+
+    class Impl;
+    const std::unique_ptr<Impl> impl;
 };
 
 #endif
