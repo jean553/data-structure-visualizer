@@ -11,9 +11,11 @@ HEADERS = includes/mainwindow.hpp \
 
 release:DESTDIR = release
 release:OBJECTS_DIR = release
+release:MOC_DIR = release
 
 debug:DESTDIR = debug
 debug:OBJECTS_DIR = debug
+debug:MOC_DIR = debug
 
 # The following define makes your compiler warn you if you use any
 # feature of Qt which has been marked as deprecated (the exact warnings
