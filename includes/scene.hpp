@@ -21,8 +21,6 @@ public:
      */
     ~Scene();
 
-public slots:
-
     /**
      * @brief called from the linked list menu creation action;
      * it creates a new linked list node on the scene
@@ -30,6 +28,14 @@ public slots:
      * @param data the data to insert into the first node
      */
     void createLinkedList(const int& data);
+
+    /**
+     * @brief called from the linked list menu end insertion action;
+     * it creates a new linked list node to the end of the existing list
+     *
+     * @param data the data to insert into the first node
+     */
+    void insertAtTheEndLinkedList(const int& data);
 
 private:
 

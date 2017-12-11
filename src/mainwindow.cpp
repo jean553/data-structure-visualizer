@@ -117,5 +117,5 @@ void MainWindow::insertAtTheEndLinkedList()
         return;
     }
 
-    /* TODO: add the method that inserts at the end of linked list */
+    impl->scene->insertAtTheEndLinkedList(data);
 }
