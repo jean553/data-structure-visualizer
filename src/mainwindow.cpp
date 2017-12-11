@@ -7,6 +7,11 @@
 #include <QGraphicsTextItem>
 #include <QInputDialog>
 
+constexpr int DEFAULT_VALUE {0};
+constexpr int MINIMUM_VALUE {0};
+constexpr int MAXIMUM_VALUE {100};
+constexpr int STEP {1};
+
 class MainWindow::Impl
 {
 
@@ -15,6 +20,7 @@ public:
     QMenu* linkedListMenu;
 
     QAction* createAction;
+    QAction* insertAtTheEndAction;
 
     QGraphicsView* view;
 
@@ -44,8 +50,17 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(createLinkedList())
     );
 
+    impl->insertAtTheEndAction = new QAction("Insert at the end");
+    connect(
+        impl->insertAtTheEndAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(insertAtTheEndLinkedList())
+    );
+
     impl->linkedListMenu = menuBar()->addMenu("Linked list");
     impl->linkedListMenu->addAction(impl->createAction);
+    impl->linkedListMenu->addAction(impl->insertAtTheEndAction);
 
     setCentralWidget(impl->view);
 }
@@ -62,13 +77,9 @@ void MainWindow::createLinkedList()
 {
     bool set {false};
 
-    constexpr int DEFAULT_VALUE {0};
-    constexpr int MINIMUM_VALUE {0};
-    constexpr int MAXIMUM_VALUE {100};
-    constexpr int STEP {1};
     const int data = QInputDialog::getInt(
         this,
-        "Create linked list",
+        "Linked list",
         "Linked list first node data:",
         DEFAULT_VALUE,
         MINIMUM_VALUE,
@@ -82,4 +93,29 @@ void MainWindow::createLinkedList()
     }
 
     impl->scene->createLinkedList(data);
+}
+
+/**
+ *
+ */
+void MainWindow::insertAtTheEndLinkedList()
+{
+    bool set {false};
+
+    const int data = QInputDialog::getInt(
+        this,
+        "Linked list",
+        "Last data to insert:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    /* TODO: add the method that inserts at the end of linked list */
 }
