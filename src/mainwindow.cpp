@@ -62,6 +62,8 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     impl->linkedListMenu->addAction(impl->createAction);
     impl->linkedListMenu->addAction(impl->insertAtTheEndAction);
 
+    impl->insertAtTheEndAction->setEnabled(false);
+
     setCentralWidget(impl->view);
 }
 
@@ -93,6 +95,8 @@ void MainWindow::createLinkedList()
     }
 
     impl->scene->createLinkedList(data);
+
+    impl->insertAtTheEndAction->setEnabled(true);
 }
 
 /**
