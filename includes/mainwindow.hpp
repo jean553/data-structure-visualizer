@@ -28,9 +28,15 @@ private slots:
 
     /**
      * @brief called by the linked list menu create action;
-     * display the popup that asks for the linked list first value
+     * displays the popup that asks for the linked list first value
      */
     void createLinkedList();
+
+    /**
+     * @brief called by the linked list menu insert at the end action;
+     * displays the popup that asks for the next linked list value
+     */
+    void insertAtTheEndLinkedList();
 
 private:
 
