@@ -33,3 +33,17 @@ void Scene::createLinkedList(const int& data)
 
     impl->list = create(data);
 }
+
+/**
+ *
+ */
+void Scene::insertAtTheEndLinkedList(const int& data)
+{
+    LinkedListItem* item = new LinkedListItem(data);
+    addItem(item);
+
+    insertAtTheEnd(
+        &impl->list,
+        data
+    );
+}
