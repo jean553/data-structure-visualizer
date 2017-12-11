@@ -30,4 +30,6 @@ void Scene::createLinkedList(const int& data)
 {
     LinkedListItem* item = new LinkedListItem(data);
     addItem(item);
+
+    impl->list = create(data);
 }
