@@ -26,18 +26,36 @@ public:
      * it creates a new linked list node on the scene
      *
      * @param data the data to insert into the first node
+     *
+     * not const as adding an item to the scene modifies it
      */
-    void createLinkedList(const int& data);
+    void createLinkedList(const int& data) &;
 
     /**
      * @brief called from the linked list menu end insertion action;
      * it creates a new linked list node to the end of the existing list
      *
      * @param data the data to insert into the first node
+     *
+     * not const as adding an item to the scene modifies it
      */
-    void insertAtTheEndLinkedList(const int& data);
+    void insertAtTheEndLinkedList(const int& data) &;
 
 private:
+
+    /**
+     * @brief called everytime an item is added to the scene;
+     * use the current position as the item position
+     *
+     * @param item the item with its position to be set
+     */
+    void applyCurrentItemPosition(QGraphicsTextItem* item) const &;
+
+    /**
+     * @brief called everytime an item is added to the scene;
+     * increases the position of the currently inserted item
+     */
+    void increaseItemPositions() const & noexcept;
 
     class Impl;
     const std::unique_ptr<Impl> impl;
