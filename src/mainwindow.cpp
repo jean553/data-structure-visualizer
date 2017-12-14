@@ -40,6 +40,18 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     );
 
     impl->scene = new Scene();
+
+    /* set here in order to use the window dimensions;
+       TODO: #18 should be optimized regarding the window dimensions */
+    impl->scene->setSceneRect(
+        QRectF(
+            0,
+            0,
+            WINDOW_WIDTH,
+            WINDOW_HEIGHT
+        )
+    );
+
     impl->view = new QGraphicsView(impl->scene);
 
     impl->createAction = new QAction("Create");
