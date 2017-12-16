@@ -7,6 +7,8 @@
 #include <QGraphicsTextItem>
 #include <QInputDialog>
 
+#include "linked_list.h"
+
 constexpr int DEFAULT_VALUE {0};
 constexpr int MINIMUM_VALUE {0};
 constexpr int MAXIMUM_VALUE {100};
@@ -155,13 +157,15 @@ void MainWindow::atLinkedList()
 {
     bool set {false};
 
+    const int maximum_index = ::size(&impl->scene->getLinkedList()) - 1;
+
     const int data = QInputDialog::getInt(
         this,
         "Linked list",
         "Get data at index:",
         DEFAULT_VALUE,
         MINIMUM_VALUE,
-        MAXIMUM_VALUE,
+        maximum_index,
         STEP,
         &set
     );
