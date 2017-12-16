@@ -21,6 +21,7 @@ public:
 
     QAction* createAction;
     QAction* insertAtTheEndAction;
+    QAction* atAction;
 
     QGraphicsView* view;
 
@@ -70,11 +71,21 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(insertAtTheEndLinkedList())
     );
 
+    impl->atAction = new QAction("At");
+    connect(
+        impl->atAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(atLinkedList())
+    );
+
     impl->linkedListMenu = menuBar()->addMenu("Linked list");
     impl->linkedListMenu->addAction(impl->createAction);
     impl->linkedListMenu->addAction(impl->insertAtTheEndAction);
+    impl->linkedListMenu->addAction(impl->atAction);
 
     impl->insertAtTheEndAction->setEnabled(false);
+    impl->atAction->setEnabled(false);
 
     setCentralWidget(impl->view);
 }
@@ -109,6 +120,7 @@ void MainWindow::createLinkedList()
     impl->scene->createLinkedList(data);
 
     impl->insertAtTheEndAction->setEnabled(true);
+    impl->atAction->setEnabled(true);
 }
 
 /**
@@ -134,4 +146,27 @@ void MainWindow::insertAtTheEndLinkedList()
     }
 
     impl->scene->insertAtTheEndLinkedList(data);
+}
+
+/**
+ *
+ */
+void MainWindow::atLinkedList()
+{
+    bool set {false};
+
+    const int data = QInputDialog::getInt(
+        this,
+        "Linked list",
+        "Get data at index:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
 }
