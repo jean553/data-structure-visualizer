@@ -83,9 +83,42 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
  */
 void Scene::selectItem(const int& index) &
 {
-    /* multiplied by 2 in order to bypass the arrows items */
-    /* XXX: explain what happens here... */
-    LinkedListItem* selectedItem = (LinkedListItem*) items(Qt::AscendingOrder).at(index * 2);
+    constexpr int LINKED_LIST_NODES_STEPS {2};
+
+    auto allItems = items(Qt::AscendingOrder);
+    const auto length = allItems.size();
+
+    /* we want to iterate to each linked list node to another,
+       each one is separated by a step; handle this is easier
+       with a for loop rather than an iterator */
+    for (
+        auto i = 0;
+        i < length;
+        i += LINKED_LIST_NODES_STEPS
+    ) {
+        /* TODO: explains what happens here in case of targetted object
+           that is not a LinkedListItem */
+        auto currentItem = static_cast<LinkedListItem*>(allItems.at(i));
+
+        constexpr int UNSELECTED_COLOR_RED {0};
+        constexpr int UNSELECTED_COLOR_GREEN {0};
+        constexpr int UNSELECTED_COLOR_BLUE {0};
+        constexpr int UNSELECTED_COLOR_ALPHA {255};
+        currentItem->setDefaultTextColor(
+            QColor(
+                UNSELECTED_COLOR_RED,
+                UNSELECTED_COLOR_GREEN,
+                UNSELECTED_COLOR_BLUE,
+                UNSELECTED_COLOR_ALPHA
+            )
+        );
+    }
+
+    /* TODO: explains what happens here in case of targetted object
+       that is not a LinkedListItem */
+    auto selectedItem = static_cast<LinkedListItem*>(
+        allItems.at(index * LINKED_LIST_NODES_STEPS)
+    );
 
     constexpr int SELECTED_COLOR_RED {255};
     constexpr int SELECTED_COLOR_GREEN {0};
