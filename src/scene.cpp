@@ -81,6 +81,29 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
 /**
  *
  */
+void Scene::selectItem(const int& index) &
+{
+    /* multiplied by 2 in order to bypass the arrows items */
+    /* XXX: explain what happens here... */
+    LinkedListItem* selectedItem = (LinkedListItem*) items(Qt::AscendingOrder).at(index * 2);
+
+    constexpr int SELECTED_COLOR_RED {255};
+    constexpr int SELECTED_COLOR_GREEN {0};
+    constexpr int SELECTED_COLOR_BLUE {0};
+    constexpr int SELECTED_COLOR_ALPHA {255};
+    selectedItem->setDefaultTextColor(
+        QColor(
+            SELECTED_COLOR_RED,
+            SELECTED_COLOR_GREEN,
+            SELECTED_COLOR_BLUE,
+            SELECTED_COLOR_ALPHA
+        )
+    );
+}
+
+/**
+ *
+ */
 void Scene::applyCurrentItemPosition(QGraphicsTextItem* item) const &
 {
     item->setPos(
