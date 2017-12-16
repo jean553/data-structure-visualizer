@@ -8,6 +8,7 @@ INCLUDEPATH += includes/ \
     c-data-structures/linked_list/
 HEADERS = includes/mainwindow.hpp \
     includes/linkedlistitem.hpp \
+    includes/lineitem.hpp \
     includes/scene.hpp
 
 release:DESTDIR = release
@@ -33,6 +34,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += src/main.cpp \
     src/mainwindow.cpp \
     src/linkedlistitem.cpp \
+    src/lineitem.cpp \
     src/scene.cpp
 QT += widgets
 CONFIG += c++14
