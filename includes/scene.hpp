@@ -50,6 +50,13 @@ public:
      */
     void insertAtTheEndLinkedList(const int& data) &;
 
+    /**
+     * @brief highlight one item at the given index in red color
+     *
+     * @param index the index of the item to highlight
+     */
+    void selectItem(const int& index) &;
+
 private:
 
     /**

@@ -157,9 +157,11 @@ void MainWindow::atLinkedList()
 {
     bool set {false};
 
+    /* FIXME: should be done in the scene,
+       no getter is required for now */
     const int maximum_index = ::size(&impl->scene->getLinkedList()) - 1;
 
-    const int data = QInputDialog::getInt(
+    const int index = QInputDialog::getInt(
         this,
         "Linked list",
         "Get data at index:",
@@ -173,4 +175,6 @@ void MainWindow::atLinkedList()
     if (!set) {
         return;
     }
+
+    impl->scene->selectItem(index);
 }
