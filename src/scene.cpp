@@ -46,12 +46,21 @@ void Scene::createLinkedList(const int& data) &
  */
 void Scene::insertAtTheEndLinkedList(const int& data) &
 {
+    /* this line may segfault if the items list is empty;
+       we voluntary keep it as this function should not
+       be called if the list is empty anyway */
+    QGraphicsItem* previousItem = items(Qt::AscendingOrder).last();
+
     LinkedListItem* item = new LinkedListItem(data);
     applyCurrentItemPosition(item);
-    addItem(item);
 
-    LineItem* line = new LineItem();
+    LineItem* line = new LineItem(
+        previousItem,
+        item
+    );
+
     addItem(line);
+    addItem(item);
 
     insertAtTheEnd(
         &impl->list,

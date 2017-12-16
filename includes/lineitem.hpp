@@ -10,8 +10,14 @@ public:
 
     /**
      * @brief line item constructor
+     *
+     * @param firstItem the item at the left side of the line
+     * @param secondItem the item at the right side of the line
      */
-    LineItem();
+    LineItem(
+        const QGraphicsItem* const firstItem,
+        const QGraphicsItem* const secondItem
+    );
 };
 
 #endif
