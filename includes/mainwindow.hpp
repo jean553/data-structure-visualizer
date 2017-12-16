@@ -42,6 +42,14 @@ private slots:
      */
     void insertAtTheEndLinkedList();
 
+    /**
+     * @brief called by the linked list menu at action;
+     * displays the popup that asks for the linked list index
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void atLinkedList();
+
 private:
 
     class Impl;
