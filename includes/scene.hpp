@@ -5,6 +5,8 @@
 
 #include <memory>
 
+struct LinkedList;
+
 class Scene : public QGraphicsScene
 {
     Q_OBJECT
@@ -20,6 +22,13 @@ public:
      * @brief default destructor
      */
     ~Scene();
+
+    /**
+     * @brief getter of the linked list structure
+     *
+     * @return LinkedList&
+     */
+    LinkedList& getLinkedList() const & noexcept;
 
     /**
      * @brief called from the linked list menu creation action;
