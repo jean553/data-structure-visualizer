@@ -30,6 +30,14 @@ Scene::~Scene() = default;
 /**
  *
  */
+LinkedList& Scene::getLinkedList() const & noexcept
+{
+    return impl->list;
+}
+
+/**
+ *
+ */
 void Scene::createLinkedList(const int& data) &
 {
     LinkedListItem* item = new LinkedListItem(data);
