@@ -1,5 +1,6 @@
 #include "scene.hpp"
 #include "linkedlistitem.hpp"
+#include "lineitem.hpp"
 
 #include "linked_list.h"
 
@@ -48,6 +49,9 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
     LinkedListItem* item = new LinkedListItem(data);
     applyCurrentItemPosition(item);
     addItem(item);
+
+    LineItem* line = new LineItem();
+    addItem(line);
 
     insertAtTheEnd(
         &impl->list,
