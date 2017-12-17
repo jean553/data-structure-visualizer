@@ -48,7 +48,7 @@ public:
      *
      * @return const unsigned int&
      */
-    const unsigned int getLinkedListLastIndex() const &;
+    const unsigned int& getLinkedListLastIndex() const &;
 
     /**
      * @brief highlight one item at the given index in red color

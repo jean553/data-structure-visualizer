@@ -73,7 +73,7 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
 /**
  *
  */
-const unsigned int Scene::getLinkedListLastIndex() const &
+const unsigned int& Scene::getLinkedListLastIndex() const &
 {
     return ::size(&impl->list) - 1;
 }
@@ -96,8 +96,8 @@ void Scene::selectItem(const int& index) &
         i < length;
         i += LINKED_LIST_NODES_STEPS
     ) {
-        /* TODO: explains what happens here in case of targetted object
-           that is not a LinkedListItem */
+        /* undefined behaviour if at(i) does not contain a pointer to a LinkedListItem*;
+           in case of a linked list, this situation should not happen */
         auto currentItem = static_cast<LinkedListItem*>(allItems.at(i));
 
         constexpr int UNSELECTED_COLOR_RED {0};
@@ -114,8 +114,8 @@ void Scene::selectItem(const int& index) &
         );
     }
 
-    /* TODO: explains what happens here in case of targetted object
-       that is not a LinkedListItem */
+    /* undefined behaviour if at(i) does not contain a pointer to a LinkedListItem*;
+       in case of a linked list, this situation should not happen */
     auto selectedItem = static_cast<LinkedListItem*>(
         allItems.at(index * LINKED_LIST_NODES_STEPS)
     );
