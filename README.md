@@ -1,5 +1,7 @@
 # data-structures-visualizer
 
+![Image 1](res/screenshot.png)
+
 User interface to create, edit and visualize programming data structures.
 The project uses the libraries created through the following project:
 https://github.com/jean553/c-data-structures
