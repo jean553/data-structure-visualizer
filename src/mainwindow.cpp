@@ -7,8 +7,6 @@
 #include <QGraphicsTextItem>
 #include <QInputDialog>
 
-#include "linked_list.h"
-
 constexpr int DEFAULT_VALUE {0};
 constexpr int MINIMUM_VALUE {0};
 constexpr int MAXIMUM_VALUE {100};
@@ -42,54 +40,63 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         WINDOW_HEIGHT
     );
 
-    impl->scene = new Scene();
+    auto& scene = impl->scene;
+    auto& view = impl->view;
+
+    scene = new Scene();
 
     /* set here in order to use the window dimensions;
        TODO: #18 should be optimized regarding the window dimensions */
-    impl->scene->setSceneRect(
+    constexpr int WINDOW_ORIGINS {0};
+    scene->setSceneRect(
         QRectF(
-            0,
-            0,
+            WINDOW_ORIGINS,
+            WINDOW_ORIGINS,
             WINDOW_WIDTH,
             WINDOW_HEIGHT
         )
     );
 
-    impl->view = new QGraphicsView(impl->scene);
+    view = new QGraphicsView(scene);
 
-    impl->createAction = new QAction("Create");
+    auto& createAction = impl->createAction;
+    auto& insertAtTheEndAction = impl->insertAtTheEndAction;
+    auto& atAction = impl->atAction;
+
+    createAction = new QAction("Create");
     connect(
-        impl->createAction,
+        createAction,
         SIGNAL(triggered()),
         this,
         SLOT(createLinkedList())
     );
 
-    impl->insertAtTheEndAction = new QAction("Insert at the end");
+    insertAtTheEndAction = new QAction("Insert at the end");
     connect(
-        impl->insertAtTheEndAction,
+        insertAtTheEndAction,
         SIGNAL(triggered()),
         this,
         SLOT(insertAtTheEndLinkedList())
     );
 
-    impl->atAction = new QAction("At");
+    atAction = new QAction("At");
     connect(
-        impl->atAction,
+        atAction,
         SIGNAL(triggered()),
         this,
         SLOT(atLinkedList())
     );
 
-    impl->linkedListMenu = menuBar()->addMenu("Linked list");
-    impl->linkedListMenu->addAction(impl->createAction);
-    impl->linkedListMenu->addAction(impl->insertAtTheEndAction);
-    impl->linkedListMenu->addAction(impl->atAction);
+    auto& linkedListMenu = impl->linkedListMenu;
+    linkedListMenu = menuBar()->addMenu("Linked list");
+    linkedListMenu->addAction(createAction);
+    linkedListMenu->addAction(insertAtTheEndAction);
+    linkedListMenu->addAction(atAction);
 
-    impl->insertAtTheEndAction->setEnabled(false);
-    impl->atAction->setEnabled(false);
+    insertAtTheEndAction->setEnabled(false);
+    atAction->setEnabled(false);
 
-    setCentralWidget(impl->view);
+    setCentralWidget(view);
 }
 
 /**
@@ -121,6 +128,7 @@ void MainWindow::createLinkedList()
 
     impl->scene->createLinkedList(data);
 
+    impl->createAction->setEnabled(false);
     impl->insertAtTheEndAction->setEnabled(true);
     impl->atAction->setEnabled(true);
 }
@@ -157,13 +165,15 @@ void MainWindow::atLinkedList()
 {
     bool set {false};
 
+    auto& scene = impl->scene;
+
     const int index = QInputDialog::getInt(
         this,
         "Linked list",
         "Get data at index:",
         DEFAULT_VALUE,
         MINIMUM_VALUE,
-        impl->scene->getLinkedListLastIndex(),
+        scene->getLinkedListLastIndex(),
         STEP,
         &set
     );
@@ -172,5 +182,5 @@ void MainWindow::atLinkedList()
         return;
     }
 
-    impl->scene->selectItem(index);
+    scene->selectItem(index);
 }
