@@ -24,13 +24,6 @@ public:
     ~Scene();
 
     /**
-     * @brief getter of the linked list structure
-     *
-     * @return LinkedList&
-     */
-    LinkedList& getLinkedList() const & noexcept;
-
-    /**
      * @brief called from the linked list menu creation action;
      * it creates a new linked list node on the scene
      *
@@ -49,6 +42,13 @@ public:
      * not const as adding an item to the scene modifies it
      */
     void insertAtTheEndLinkedList(const int& data) &;
+
+    /**
+     * @brief called from the linked list index popup
+     *
+     * @return const unsigned int&
+     */
+    const unsigned int getLinkedListLastIndex() const &;
 
     /**
      * @brief highlight one item at the given index in red color

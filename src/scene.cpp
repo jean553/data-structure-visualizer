@@ -30,14 +30,6 @@ Scene::~Scene() = default;
 /**
  *
  */
-LinkedList& Scene::getLinkedList() const & noexcept
-{
-    return impl->list;
-}
-
-/**
- *
- */
 void Scene::createLinkedList(const int& data) &
 {
     LinkedListItem* item = new LinkedListItem(data);
@@ -76,6 +68,14 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
     );
 
     increaseItemPositions();
+}
+
+/**
+ *
+ */
+const unsigned int Scene::getLinkedListLastIndex() const &
+{
+    return ::size(&impl->list) - 1;
 }
 
 /**
