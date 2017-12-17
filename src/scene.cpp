@@ -73,7 +73,7 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
 /**
  *
  */
-const unsigned int& Scene::getLinkedListLastIndex() const &
+const unsigned int Scene::getLinkedListLastIndex() const &
 {
     return ::size(&impl->list) - 1;
 }

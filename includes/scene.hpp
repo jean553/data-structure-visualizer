@@ -46,9 +46,9 @@ public:
     /**
      * @brief called from the linked list index popup
      *
-     * @return const unsigned int&
+     * @return const unsigned int
      */
-    const unsigned int& getLinkedListLastIndex() const &;
+    const unsigned int getLinkedListLastIndex() const &;
 
     /**
      * @brief highlight one item at the given index in red color
