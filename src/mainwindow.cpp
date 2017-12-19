@@ -45,15 +45,15 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
 
     scene = new Scene();
 
-    /* set here in order to use the window dimensions;
-       TODO: #18 should be optimized regarding the window dimensions */
+    /* set here in order to use the window dimensions */
     constexpr int WINDOW_ORIGINS {0};
+    constexpr int SCENE_MARGINS {50};
     scene->setSceneRect(
         QRectF(
             WINDOW_ORIGINS,
             WINDOW_ORIGINS,
-            WINDOW_WIDTH,
-            WINDOW_HEIGHT
+            WINDOW_WIDTH - SCENE_MARGINS,
+            WINDOW_HEIGHT - SCENE_MARGINS
         )
     );
 
