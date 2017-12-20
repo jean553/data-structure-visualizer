@@ -32,18 +32,9 @@ Scene::~Scene() = default;
  */
 void Scene::createLinkedList(const int& data) &
 {
-    clear();
-
-    impl->lastItemHorizontalPosition = 10.0;
-    impl->lastItemVerticalPosition = 10.0;
-
-    LinkedListItem* item = new LinkedListItem(data);
-    applyCurrentItemPosition(item);
-    addItem(item);
-
     impl->list = create(data);
 
-    increaseItemPositions();
+    render();
 }
 
 /**
@@ -166,7 +157,7 @@ void Scene::render() &
     qreal horizontalPosition {10.0};
     qreal verticalPosition {10.0};
 
-    LinkedListItem *lastItem;
+    LinkedListItem *lastItem = NULL;
 
     for (
         auto index = 0;
