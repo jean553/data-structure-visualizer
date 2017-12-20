@@ -60,6 +60,12 @@ public:
 private:
 
     /**
+     * @brief clears the scene and updates it according to the linked list;
+     * creates the required items and prints them on the scene
+     */
+    void render() &;
+
+    /**
      * @brief called everytime an item is added to the scene;
      * use the current position as the item position
      *
