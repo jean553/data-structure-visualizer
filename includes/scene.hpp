@@ -25,7 +25,7 @@ public:
 
     /**
      * @brief called from the linked list menu creation action;
-     * it creates a new linked list node on the scene
+     * it clears the whole scene content and add a new item
      *
      * @param data the data to insert into the first node
      *
@@ -58,6 +58,12 @@ public:
     void selectItem(const int& index) &;
 
 private:
+
+    /**
+     * @brief clears the scene and updates it according to the linked list;
+     * creates the required items and prints them on the scene
+     */
+    void render() &;
 
     /**
      * @brief called everytime an item is added to the scene;

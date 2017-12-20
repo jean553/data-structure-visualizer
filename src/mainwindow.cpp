@@ -128,7 +128,6 @@ void MainWindow::createLinkedList()
 
     impl->scene->createLinkedList(data);
 
-    impl->createAction->setEnabled(false);
     impl->insertAtTheEndAction->setEnabled(true);
     impl->atAction->setEnabled(true);
 }

@@ -32,6 +32,11 @@ Scene::~Scene() = default;
  */
 void Scene::createLinkedList(const int& data) &
 {
+    clear();
+
+    impl->lastItemHorizontalPosition = 10.0;
+    impl->lastItemVerticalPosition = 10.0;
+
     LinkedListItem* item = new LinkedListItem(data);
     applyCurrentItemPosition(item);
     addItem(item);
@@ -146,6 +151,58 @@ void Scene::selectItem(const int& index) &
         }
 
         currentItem->setDefaultTextColor(color);
+    }
+}
+
+/**
+ *
+ */
+void Scene::render() &
+{
+    clear();
+
+    const auto length = ::size(&impl->list);
+
+    qreal horizontalPosition {10.0};
+    qreal verticalPosition {10.0};
+
+    LinkedListItem *lastItem;
+
+    for (
+        auto index = 0;
+        index < length;
+        index += 1
+    ) {
+
+        const auto data = ::at(
+            &impl->list,
+            index
+        );
+
+        constexpr qreal ITEMS_DISTANCE {50.0};
+        horizontalPosition += ITEMS_DISTANCE;
+        verticalPosition += ITEMS_DISTANCE;
+
+        LinkedListItem* item = new LinkedListItem(data);
+        item->setPos(
+            horizontalPosition,
+            verticalPosition
+        );
+
+        /* XXX: very old C++... */
+        if (lastItem != NULL)
+        {
+            LineItem* line = new LineItem(
+                lastItem,
+                item
+            );
+
+            addItem(line);
+        }
+
+        addItem(item);
+
+        lastItem = item;
     }
 }
 
