@@ -25,7 +25,7 @@ public:
 
     /**
      * @brief called from the linked list menu creation action;
-     * it creates a new linked list node on the scene
+     * it clears the whole scene content and add a new item
      *
      * @param data the data to insert into the first node
      *
