@@ -234,7 +234,7 @@ void MainWindow::insertAfterLinkedList()
 
     const auto maximumIndex = scene->getLinkedListLastIndex();
     InsertDialog* dialog = new InsertDialog(maximumIndex);
-    dialog->show();
+    dialog->exec();
 }
 
 /**
