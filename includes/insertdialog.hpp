@@ -7,6 +7,7 @@
 
 class InsertDialog : public QDialog
 {
+    Q_OBJECT
     
 public:
 

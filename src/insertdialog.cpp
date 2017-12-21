@@ -63,8 +63,22 @@ InsertDialog::InsertDialog(const int& maximumIndex) :
     auto& okButton = impl->okButton;
     okButton = new QPushButton("OK", this);
 
+    connect(
+        okButton,
+        SIGNAL(clicked()),
+        this,
+        SLOT(accept())
+    );
+
     auto& cancelButton = impl->cancelButton;
     cancelButton = new QPushButton("Cancel", this);
+
+    connect(
+        cancelButton,
+        SIGNAL(clicked()),
+        this,
+        SLOT(reject())
+    );
 
     auto& layout = impl->layout;
     layout = new QGridLayout(this);
