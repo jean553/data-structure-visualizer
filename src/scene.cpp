@@ -55,6 +55,19 @@ void Scene::insertAtTheEndLinkedList(const int& data) &
 /**
  *
  */
+void Scene::insertAtTheBeginningLinkedList(const int& data) &
+{
+    insertAtTheBeginning(
+        &impl->list,
+        data
+    );
+
+    render();
+}
+
+/**
+ *
+ */
 const unsigned int Scene::getLinkedListLastIndex() const &
 {
     return ::size(&impl->list) - 1;

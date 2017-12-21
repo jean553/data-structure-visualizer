@@ -37,11 +37,21 @@ public:
      * @brief called from the linked list menu end insertion action;
      * it creates a new linked list node to the end of the existing list
      *
-     * @param data the data to insert into the first node
+     * @param data the data to insert into the last node
      *
      * not const as adding an item to the scene modifies it
      */
     void insertAtTheEndLinkedList(const int& data) &;
+
+    /**
+     * @brief called from the linked list menu end insertion action;
+     * it creates a new linked list node at the beginning of the existing list
+     *
+     * @param data the data to insert into the first node
+     *
+     * not const as adding an item to the scene modifies it
+     */
+    void insertAtTheBeginningLinkedList(const int& data) &;
 
     /**
      * @brief called from the linked list index popup
