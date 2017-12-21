@@ -51,6 +51,14 @@ private slots:
     void insertAtTheBeginningLinkedList();
 
     /**
+     * @brief called by the linked list menu insert after action;
+     * displays the popup that asks for the index after which one to insert
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void insertAfterLinkedList();
+
+    /**
      * @brief called by the linked list menu at action;
      * displays the popup that asks for the linked list index
      *

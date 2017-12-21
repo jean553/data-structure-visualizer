@@ -64,6 +64,20 @@ public:
     void dropAtIndexLinkedList(const int& index) &;
 
     /**
+     * @brief called from the linked list menu insert after action
+     * it inserts the given data (node) after the given index
+     *
+     * @param index specifies after which index the new node must be inserted
+     * @param data the data to insert into the new node
+     *
+     * not const as adding an item to the scene modifies it
+     */
+    void insertAfterLinkedList(
+        const int& index,
+        const int& data
+    ) &;
+
+    /**
      * @brief called from the linked list index popup
      *
      * @return const unsigned int

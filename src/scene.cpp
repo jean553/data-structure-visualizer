@@ -81,6 +81,23 @@ void Scene::dropAtIndexLinkedList(const int& index) &
 /**
  *
  */
+void Scene::insertAfterLinkedList(
+    const int& index,
+    const int& data
+) &
+{
+    insertAfter(
+        &impl->list,
+        index,
+        data
+    );
+
+    render();
+}
+
+/**
+ *
+ */
 const unsigned int Scene::getLinkedListLastIndex() const &
 {
     return ::size(&impl->list) - 1;
