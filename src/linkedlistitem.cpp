@@ -6,31 +6,10 @@
 /**
  *
  */
-class LinkedListItem::Impl
-{
-
-public:
-
-    Impl(const int& data) : data(data)
-    {
-    }
-
-    const int data;
-};
-
-/**
- *
- */
-LinkedListItem::LinkedListItem(const int& data) :
-    impl(std::make_unique<Impl>(data))
+LinkedListItem::LinkedListItem(const int& data)
 {
     setPlainText(QString::number(data));
 }
-
-/**
- *
- */
-LinkedListItem::~LinkedListItem() = default;
 
 /**
  *
