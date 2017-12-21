@@ -180,24 +180,3 @@ void Scene::render() &
         lastItem = item;
     }
 }
-
-/**
- *
- */
-void Scene::applyCurrentItemPosition(QGraphicsTextItem* item) const &
-{
-    item->setPos(
-        impl->lastItemHorizontalPosition,
-        impl->lastItemVerticalPosition
-    );
-}
-
-/**
- *
- */
-void Scene::increaseItemPositions() const & noexcept
-{
-    constexpr qreal ITEMS_DISTANCE {50.0};
-    impl->lastItemHorizontalPosition += ITEMS_DISTANCE;
-    impl->lastItemVerticalPosition += ITEMS_DISTANCE;
-}

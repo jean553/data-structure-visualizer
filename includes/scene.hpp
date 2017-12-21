@@ -65,20 +65,6 @@ private:
      */
     void render() &;
 
-    /**
-     * @brief called everytime an item is added to the scene;
-     * use the current position as the item position
-     *
-     * @param item the item with its position to be set
-     */
-    void applyCurrentItemPosition(QGraphicsTextItem* item) const &;
-
-    /**
-     * @brief called everytime an item is added to the scene;
-     * increases the position of the currently inserted item
-     */
-    void increaseItemPositions() const & noexcept;
-
     class Impl;
     const std::unique_ptr<Impl> impl;
 };
