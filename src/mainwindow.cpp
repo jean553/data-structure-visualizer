@@ -303,6 +303,7 @@ void MainWindow::dropAtLinkedList()
         impl->createAction->setEnabled(true);
         impl->insertAtTheEndAction->setEnabled(false);
         impl->insertAtTheBeginningAction->setEnabled(false);
+        impl->insertAfter->setEnabled(false);
         impl->atAction->setEnabled(false);
         impl->dropAtAction->setEnabled(false);
     }
