@@ -23,6 +23,20 @@ public:
      */
     ~InsertDialog();
 
+    /**
+     * @brief getter for the given index
+     *
+     * @return const int
+     */
+    const int getIndex();
+
+    /**
+     * @brief getter fo the given data
+     *
+     * @return const int
+     */
+    const int getData();
+
 private:
 
     class Impl;

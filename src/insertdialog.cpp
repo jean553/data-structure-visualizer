@@ -98,3 +98,19 @@ InsertDialog::InsertDialog(const int& maximumIndex) :
  *
  */
 InsertDialog::~InsertDialog() = default;
+
+/**
+ *
+ */
+const int InsertDialog::getIndex()
+{
+    return impl->indexLine->value();
+}
+
+/**
+ *
+ */
+const int InsertDialog::getData()
+{
+    return impl->dataLine->value();
+}
