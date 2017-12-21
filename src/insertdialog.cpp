@@ -68,6 +68,8 @@ InsertDialog::InsertDialog(const int& maximumIndex) :
 
     auto& layout = impl->layout;
     layout = new QGridLayout(this);
+
+    /* write row integers directly as this is clearer for grid disposition */
     layout->addWidget(indexLabel, 0, 0, 1, 2);
     layout->addWidget(indexLine, 1, 0, 1, 2);
     layout->addWidget(dataLabel, 2, 0, 1, 2);
