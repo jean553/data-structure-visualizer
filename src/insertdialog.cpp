@@ -68,10 +68,12 @@ InsertDialog::InsertDialog(const int& maximumIndex) :
 
     auto& layout = impl->layout;
     layout = new QGridLayout(this);
-    layout->addWidget(indexLabel, 0, 0);
-    layout->addWidget(indexLine, 1, 0);
-    layout->addWidget(dataLabel, 2, 0);
-    layout->addWidget(dataLine, 3, 0);
+    layout->addWidget(indexLabel, 0, 0, 1, 2);
+    layout->addWidget(indexLine, 1, 0, 1, 2);
+    layout->addWidget(dataLabel, 2, 0, 1, 2);
+    layout->addWidget(dataLine, 3, 0, 1, 2);
+    layout->addWidget(okButton, 4, 0, 1, 1);
+    layout->addWidget(cancelButton, 4, 1, 1, 1);
 
     setLayout(layout);
 }
