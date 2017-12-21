@@ -21,7 +21,8 @@ public:
 /**
  *
  */
-InsertDialog::InsertDialog() : impl(std::make_unique<Impl>())
+InsertDialog::InsertDialog(const int& maximumIndex) :
+    impl(std::make_unique<Impl>())
 {
     constexpr int WIDTH {200}; 
     constexpr int HEIGHT {160};
@@ -38,14 +39,12 @@ InsertDialog::InsertDialog() : impl(std::make_unique<Impl>())
     auto& dataLabel = impl->dataLabel;
     dataLabel = new QLabel("Data:", this);
 
-    /* FIXME: should depend of the list size */
-    constexpr int MAXIMUM_INDEX {100};
     constexpr int MINIMUM_INDEX {0};
     auto& indexLine = impl->indexLine;
     indexLine = new QSpinBox(this);
     indexLine->setRange(
         MINIMUM_INDEX,
-        MAXIMUM_INDEX
+        maximumIndex
     );
 
     constexpr int MAXIMUM_DATA {99};

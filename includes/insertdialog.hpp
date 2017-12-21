@@ -12,8 +12,10 @@ public:
 
     /**
      * @brief insert dialog constructor
+     *
+     * @param maximumIndex the maximum index allowed
      */
-    InsertDialog();
+    InsertDialog(const int& maximumIndex);
 
     /**
      * @brief default destructor
