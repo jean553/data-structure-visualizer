@@ -4,6 +4,8 @@
 
 #include "linked_list.h"
 
+#include <QPointer>
+
 class Scene::Impl
 {
 
@@ -141,7 +143,8 @@ void Scene::render() &
     qreal horizontalPosition {10.0};
     qreal verticalPosition {10.0};
 
-    LinkedListItem *lastItem = NULL;
+    LinkedListItem plop(10);
+    QPointer<LinkedListItem> lastItem;
 
     for (
         auto index = 0;
@@ -164,8 +167,7 @@ void Scene::render() &
             verticalPosition
         );
 
-        /* XXX: very old C++... */
-        if (lastItem != NULL)
+        if (not lastItem.isNull())
         {
             LineItem* line = new LineItem(
                 lastItem,
