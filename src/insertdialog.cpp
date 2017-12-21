@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QSpinBox>
 #include <QGridLayout>
+#include <QPushButton>
 
 class InsertDialog::Impl
 {
@@ -16,6 +17,9 @@ public:
 
     QSpinBox* indexLine;
     QSpinBox* dataLine;
+
+    QPushButton* okButton;
+    QPushButton* cancelButton;
 };
 
 /**
@@ -55,6 +59,12 @@ InsertDialog::InsertDialog(const int& maximumIndex) :
         MINIMUM_DATA,
         MAXIMUM_DATA
     );
+
+    auto& okButton = impl->okButton;
+    okButton = new QPushButton("OK", this);
+
+    auto& cancelButton = impl->cancelButton;
+    cancelButton = new QPushButton("Cancel", this);
 
     auto& layout = impl->layout;
     layout = new QGridLayout(this);
