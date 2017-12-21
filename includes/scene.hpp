@@ -54,6 +54,16 @@ public:
     void insertAtTheBeginningLinkedList(const int& data) &;
 
     /**
+     * @brief called from the linked list menu drop at action;
+     * it removes the linked list item at the given index
+     *
+     * @param index the index of the node to remove
+     *
+     * not const as adding an item to the scene modifies it
+     */
+    void dropAtIndexLinkedList(const int& index) &;
+
+    /**
      * @brief called from the linked list index popup
      *
      * @return const unsigned int

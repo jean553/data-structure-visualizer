@@ -58,6 +58,14 @@ private slots:
      */
     void atLinkedList();
 
+    /**
+     * @brief called by the linked list menu drop at action;
+     * displays the popup that asks for the linked list index
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void dropAtLinkedList();
+
 private:
 
     class Impl;
