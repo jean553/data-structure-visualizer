@@ -23,6 +23,7 @@ public:
     QAction* insertAtTheEndAction;
     QAction* insertAtTheBeginningAction;
     QAction* atAction;
+    QAction* dropAtAction;
 
     QGraphicsView* view;
 
@@ -64,6 +65,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& insertAtTheEndAction = impl->insertAtTheEndAction;
     auto& insertAtTheBeginningAction = impl->insertAtTheBeginningAction;
     auto& atAction = impl->atAction;
+    auto& dropAtAction = impl->dropAtAction;
 
     createAction = new QAction("Create");
     connect(
@@ -97,16 +99,26 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(atLinkedList())
     );
 
+    dropAtAction = new QAction("Drop at");
+    connect(
+        dropAtAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(dropAtLinkedList())
+    );
+
     auto& linkedListMenu = impl->linkedListMenu;
     linkedListMenu = menuBar()->addMenu("Linked list");
     linkedListMenu->addAction(createAction);
     linkedListMenu->addAction(insertAtTheEndAction);
     linkedListMenu->addAction(insertAtTheBeginningAction);
     linkedListMenu->addAction(atAction);
+    linkedListMenu->addAction(dropAtAction);
 
     insertAtTheEndAction->setEnabled(false);
     insertAtTheBeginningAction->setEnabled(false);
     atAction->setEnabled(false);
+    dropAtAction->setEnabled(false);
 
     setCentralWidget(view);
 }
@@ -140,9 +152,11 @@ void MainWindow::createLinkedList()
 
     impl->scene->createLinkedList(data);
 
+    impl->createAction->setEnabled(false);
     impl->insertAtTheEndAction->setEnabled(true);
     impl->insertAtTheBeginningAction->setEnabled(true);
     impl->atAction->setEnabled(true);
+    impl->dropAtAction->setEnabled(true);
 }
 
 /**
@@ -220,4 +234,40 @@ void MainWindow::atLinkedList()
     }
 
     scene->selectItem(index);
+}
+
+/**
+ *
+ */
+void MainWindow::dropAtLinkedList()
+{
+    bool set {false};
+
+    auto& scene = impl->scene;
+
+    const int index = QInputDialog::getInt(
+        this,
+        "Linked list",
+        "Drop at index:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        scene->getLinkedListLastIndex(),
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    if (scene->getLinkedListLastIndex() == 0)
+    {
+        impl->createAction->setEnabled(true);
+        impl->insertAtTheEndAction->setEnabled(false);
+        impl->insertAtTheBeginningAction->setEnabled(false);
+        impl->atAction->setEnabled(false);
+        impl->dropAtAction->setEnabled(false);
+    }
+
+    scene->dropAtIndexLinkedList(index);
 }

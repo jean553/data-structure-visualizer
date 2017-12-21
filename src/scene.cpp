@@ -68,6 +68,19 @@ void Scene::insertAtTheBeginningLinkedList(const int& data) &
 /**
  *
  */
+void Scene::dropAtIndexLinkedList(const int& index) &
+{
+    dropAt(
+        &impl->list,
+        index
+    );
+
+    render();
+}
+
+/**
+ *
+ */
 const unsigned int Scene::getLinkedListLastIndex() const &
 {
     return ::size(&impl->list) - 1;
@@ -156,7 +169,6 @@ void Scene::render() &
     qreal horizontalPosition {10.0};
     qreal verticalPosition {10.0};
 
-    LinkedListItem plop(10);
     QPointer<LinkedListItem> lastItem;
 
     for (
