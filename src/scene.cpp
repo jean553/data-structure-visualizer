@@ -42,28 +42,12 @@ void Scene::createLinkedList(const int& data) &
  */
 void Scene::insertAtTheEndLinkedList(const int& data) &
 {
-    /* this line may segfault if the items list is empty;
-       we voluntary keep it as this function should not
-       be called if the list is empty anyway */
-    QGraphicsItem* previousItem = items(Qt::AscendingOrder).last();
-
-    LinkedListItem* item = new LinkedListItem(data);
-    applyCurrentItemPosition(item);
-
-    LineItem* line = new LineItem(
-        previousItem,
-        item
-    );
-
-    addItem(line);
-    addItem(item);
-
     insertAtTheEnd(
         &impl->list,
         data
     );
 
-    increaseItemPositions();
+    render();
 }
 
 /**
@@ -195,25 +179,4 @@ void Scene::render() &
 
         lastItem = item;
     }
-}
-
-/**
- *
- */
-void Scene::applyCurrentItemPosition(QGraphicsTextItem* item) const &
-{
-    item->setPos(
-        impl->lastItemHorizontalPosition,
-        impl->lastItemVerticalPosition
-    );
-}
-
-/**
- *
- */
-void Scene::increaseItemPositions() const & noexcept
-{
-    constexpr qreal ITEMS_DISTANCE {50.0};
-    impl->lastItemHorizontalPosition += ITEMS_DISTANCE;
-    impl->lastItemVerticalPosition += ITEMS_DISTANCE;
 }

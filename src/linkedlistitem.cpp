@@ -6,30 +6,10 @@
 /**
  *
  */
-class LinkedListItem::Impl
+LinkedListItem::LinkedListItem(const int& data)
 {
-
-public:
-
-    Impl(const int& data) : data(data)
-    {
-    }
-
-    const int data;
-};
-
-/**
- *
- */
-LinkedListItem::LinkedListItem(const int& data) :
-    impl(std::make_unique<Impl>(data))
-{
+    setPlainText(QString::number(data));
 }
-
-/**
- *
- */
-LinkedListItem::~LinkedListItem() = default;
 
 /**
  *
@@ -52,8 +32,6 @@ void LinkedListItem::paint(
     );
     painter->setPen(Qt::black);
     painter->drawRect(option->rect);
-
-    setPlainText(QString::number(impl->data));
 
     /* sends the modified parameters to the paint() method
        that shoud have been called by the view */
