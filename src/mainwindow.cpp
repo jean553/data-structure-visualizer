@@ -1,5 +1,6 @@
 #include "mainwindow.hpp"
 #include "scene.hpp"
+#include "insertdialog.hpp"
 
 #include <QMenuBar>
 #include <QMenu>
@@ -231,22 +232,8 @@ void MainWindow::insertAfterLinkedList()
 
     auto& scene = impl->scene;
 
-    const int data = QInputDialog::getInt(
-        this,
-        "Linked list",
-        "First data to insert:",
-        DEFAULT_VALUE,
-        MINIMUM_VALUE,
-        scene->getLinkedListLastIndex(),
-        STEP,
-        &set
-    );
-
-    if (!set) {
-        return;
-    }
-
-    scene->insertAfterLinkedList(data);
+    InsertDialog* dialog = new InsertDialog();
+    dialog->show();
 }
 
 /**

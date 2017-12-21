@@ -84,7 +84,7 @@ void Scene::dropAtIndexLinkedList(const int& index) &
 void Scene::insertAfterLinkedList(
     const int& index,
     const int& data
-)
+) &
 {
     insertAfter(
         &impl->list,

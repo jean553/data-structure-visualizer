@@ -7,6 +7,7 @@ TARGET = data-structure-visualizer
 INCLUDEPATH += includes/ \
     c-data-structures/linked_list/
 HEADERS = includes/mainwindow.hpp \
+    includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
     includes/lineitem.hpp \
     includes/scene.hpp
@@ -33,6 +34,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # Input
 SOURCES += src/main.cpp \
     src/mainwindow.cpp \
+    src/insertdialog.cpp \
     src/linkedlistitem.cpp \
     src/lineitem.cpp \
     src/scene.cpp
