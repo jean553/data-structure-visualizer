@@ -22,6 +22,7 @@ public:
     QAction* createAction;
     QAction* insertAtTheEndAction;
     QAction* insertAtTheBeginningAction;
+    QAction* insertAfterAction;
     QAction* atAction;
     QAction* dropAtAction;
 
@@ -64,6 +65,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& createAction = impl->createAction;
     auto& insertAtTheEndAction = impl->insertAtTheEndAction;
     auto& insertAtTheBeginningAction = impl->insertAtTheBeginningAction;
+    auto& insertAfterAction = impl->insertAfterAction;
     auto& atAction = impl->atAction;
     auto& dropAtAction = impl->dropAtAction;
 
@@ -91,6 +93,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(insertAtTheBeginningLinkedList())
     );
 
+    insertAfterAction = new QAction("Insert after");
+    connect(
+        insertAfterAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(insertAfterLinkedList())
+    );
+
     atAction = new QAction("At");
     connect(
         atAction,
@@ -112,11 +122,13 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     linkedListMenu->addAction(createAction);
     linkedListMenu->addAction(insertAtTheEndAction);
     linkedListMenu->addAction(insertAtTheBeginningAction);
+    linkedListMenu->addAction(insertAfterAction);
     linkedListMenu->addAction(atAction);
     linkedListMenu->addAction(dropAtAction);
 
     insertAtTheEndAction->setEnabled(false);
     insertAtTheBeginningAction->setEnabled(false);
+    insertAfterAction->setEnabled(false);
     atAction->setEnabled(false);
     dropAtAction->setEnabled(false);
 
@@ -155,6 +167,7 @@ void MainWindow::createLinkedList()
     impl->createAction->setEnabled(false);
     impl->insertAtTheEndAction->setEnabled(true);
     impl->insertAtTheBeginningAction->setEnabled(true);
+    impl->insertAfterAction->setEnabled(true);
     impl->atAction->setEnabled(true);
     impl->dropAtAction->setEnabled(true);
 }
@@ -207,6 +220,33 @@ void MainWindow::insertAtTheBeginningLinkedList()
     }
 
     impl->scene->insertAtTheBeginningLinkedList(data);
+}
+
+/**
+ *
+ */
+void MainWindow::insertAfterLinkedList()
+{
+    bool set {false};
+
+    auto& scene = impl->scene;
+
+    const int data = QInputDialog::getInt(
+        this,
+        "Linked list",
+        "First data to insert:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        scene->getLinkedListLastIndex(),
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    scene->insertAfterLinkedList(data);
 }
 
 /**
