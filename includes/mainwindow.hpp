@@ -43,6 +43,14 @@ private slots:
     void insertAtTheEndLinkedList();
 
     /**
+     * @brief called by the linked list menu insert at the beginning action;
+     * displays the popup that asks for the starting linked list value
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void insertAtTheBeginningLinkedList();
+
+    /**
      * @brief called by the linked list menu at action;
      * displays the popup that asks for the linked list index
      *

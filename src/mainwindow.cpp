@@ -21,6 +21,7 @@ public:
 
     QAction* createAction;
     QAction* insertAtTheEndAction;
+    QAction* insertAtTheBeginningAction;
     QAction* atAction;
 
     QGraphicsView* view;
@@ -61,6 +62,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
 
     auto& createAction = impl->createAction;
     auto& insertAtTheEndAction = impl->insertAtTheEndAction;
+    auto& insertAtTheBeginningAction = impl->insertAtTheBeginningAction;
     auto& atAction = impl->atAction;
 
     createAction = new QAction("Create");
@@ -79,6 +81,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(insertAtTheEndLinkedList())
     );
 
+    insertAtTheBeginningAction = new QAction("Insert at the beginning");
+    connect(
+        insertAtTheBeginningAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(insertAtTheBeginningLinkedList())
+    );
+
     atAction = new QAction("At");
     connect(
         atAction,
@@ -91,9 +101,11 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     linkedListMenu = menuBar()->addMenu("Linked list");
     linkedListMenu->addAction(createAction);
     linkedListMenu->addAction(insertAtTheEndAction);
+    linkedListMenu->addAction(insertAtTheBeginningAction);
     linkedListMenu->addAction(atAction);
 
     insertAtTheEndAction->setEnabled(false);
+    insertAtTheBeginningAction->setEnabled(false);
     atAction->setEnabled(false);
 
     setCentralWidget(view);
@@ -129,6 +141,7 @@ void MainWindow::createLinkedList()
     impl->scene->createLinkedList(data);
 
     impl->insertAtTheEndAction->setEnabled(true);
+    impl->insertAtTheBeginningAction->setEnabled(true);
     impl->atAction->setEnabled(true);
 }
 
@@ -155,6 +168,31 @@ void MainWindow::insertAtTheEndLinkedList()
     }
 
     impl->scene->insertAtTheEndLinkedList(data);
+}
+
+/**
+ *
+ */
+void MainWindow::insertAtTheBeginningLinkedList()
+{
+    bool set {false};
+
+    const int data = QInputDialog::getInt(
+        this,
+        "Linked list",
+        "First data to insert:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    impl->scene->insertAtTheBeginningLinkedList(data);
 }
 
 /**
