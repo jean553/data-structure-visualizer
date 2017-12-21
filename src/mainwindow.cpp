@@ -234,7 +234,17 @@ void MainWindow::insertAfterLinkedList()
 
     const auto maximumIndex = scene->getLinkedListLastIndex();
     InsertDialog* dialog = new InsertDialog(maximumIndex);
-    dialog->exec();
+
+    auto ok = dialog->exec();
+    if (ok == QDialog::Rejected)
+    {
+        return;
+    }
+
+    scene->insertAfterLinkedList(
+        dialog->getIndex(),
+        dialog->getData()
+    );
 }
 
 /**
