@@ -20,12 +20,12 @@ public:
 
     QMenu* linkedListMenu;
 
-    QAction* createAction;
-    QAction* insertAtTheEndAction;
-    QAction* insertAtTheBeginningAction;
-    QAction* insertAfterAction;
-    QAction* atAction;
-    QAction* dropAtAction;
+    QAction* createLinkedListAction;
+    QAction* insertAtTheEndLinkedListAction;
+    QAction* insertAtTheBeginningLinkedListAction;
+    QAction* insertAfterLinkedListAction;
+    QAction* atLinkedListAction;
+    QAction* dropAtLinkedListAction;
 
     QGraphicsView* view;
 
@@ -63,56 +63,58 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
 
     view = new QGraphicsView(scene);
 
-    auto& createAction = impl->createAction;
-    auto& insertAtTheEndAction = impl->insertAtTheEndAction;
-    auto& insertAtTheBeginningAction = impl->insertAtTheBeginningAction;
-    auto& insertAfterAction = impl->insertAfterAction;
-    auto& atAction = impl->atAction;
-    auto& dropAtAction = impl->dropAtAction;
+    auto& createLinkedListAction = impl->createLinkedListAction;
+    auto& insertAtTheEndLinkedListAction =
+        impl->insertAtTheEndLinkedListAction;
+    auto& insertAtTheBeginningLinkedListAction =
+        impl->insertAtTheBeginningLinkedListAction;
+    auto& insertAfterLinkedListAction = impl->insertAfterLinkedListAction;
+    auto& atLinkedListAction = impl->atLinkedListAction;
+    auto& dropAtLinkedListAction = impl->dropAtLinkedListAction;
 
-    createAction = new QAction("Create");
+    createLinkedListAction = new QAction("Create");
     connect(
-        createAction,
+        createLinkedListAction,
         SIGNAL(triggered()),
         this,
         SLOT(createLinkedList())
     );
 
-    insertAtTheEndAction = new QAction("Insert at the end");
+    insertAtTheEndLinkedListAction = new QAction("Insert at the end");
     connect(
-        insertAtTheEndAction,
+        insertAtTheEndLinkedListAction,
         SIGNAL(triggered()),
         this,
         SLOT(insertAtTheEndLinkedList())
     );
 
-    insertAtTheBeginningAction = new QAction("Insert at the beginning");
+    insertAtTheBeginningLinkedListAction = new QAction("Insert at the beginning");
     connect(
-        insertAtTheBeginningAction,
+        insertAtTheBeginningLinkedListAction,
         SIGNAL(triggered()),
         this,
         SLOT(insertAtTheBeginningLinkedList())
     );
 
-    insertAfterAction = new QAction("Insert after");
+    insertAfterLinkedListAction = new QAction("Insert after");
     connect(
-        insertAfterAction,
+        insertAfterLinkedListAction,
         SIGNAL(triggered()),
         this,
         SLOT(insertAfterLinkedList())
     );
 
-    atAction = new QAction("At");
+    atLinkedListAction = new QAction("At");
     connect(
-        atAction,
+        atLinkedListAction,
         SIGNAL(triggered()),
         this,
         SLOT(atLinkedList())
     );
 
-    dropAtAction = new QAction("Drop at");
+    dropAtLinkedListAction = new QAction("Drop at");
     connect(
-        dropAtAction,
+        dropAtLinkedListAction,
         SIGNAL(triggered()),
         this,
         SLOT(dropAtLinkedList())
@@ -120,18 +122,18 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
 
     auto& linkedListMenu = impl->linkedListMenu;
     linkedListMenu = menuBar()->addMenu("Linked list");
-    linkedListMenu->addAction(createAction);
-    linkedListMenu->addAction(insertAtTheEndAction);
-    linkedListMenu->addAction(insertAtTheBeginningAction);
-    linkedListMenu->addAction(insertAfterAction);
-    linkedListMenu->addAction(atAction);
-    linkedListMenu->addAction(dropAtAction);
+    linkedListMenu->addAction(createLinkedListAction);
+    linkedListMenu->addAction(insertAtTheEndLinkedListAction);
+    linkedListMenu->addAction(insertAtTheBeginningLinkedListAction);
+    linkedListMenu->addAction(insertAfterLinkedListAction);
+    linkedListMenu->addAction(atLinkedListAction);
+    linkedListMenu->addAction(dropAtLinkedListAction);
 
-    insertAtTheEndAction->setEnabled(false);
-    insertAtTheBeginningAction->setEnabled(false);
-    insertAfterAction->setEnabled(false);
-    atAction->setEnabled(false);
-    dropAtAction->setEnabled(false);
+    insertAtTheEndLinkedListAction->setEnabled(false);
+    insertAtTheBeginningLinkedListAction->setEnabled(false);
+    insertAfterLinkedListAction->setEnabled(false);
+    atLinkedListAction->setEnabled(false);
+    dropAtLinkedListAction->setEnabled(false);
 
     setCentralWidget(view);
 }
@@ -165,12 +167,12 @@ void MainWindow::createLinkedList()
 
     impl->scene->createLinkedList(data);
 
-    impl->createAction->setEnabled(false);
-    impl->insertAtTheEndAction->setEnabled(true);
-    impl->insertAtTheBeginningAction->setEnabled(true);
-    impl->insertAfterAction->setEnabled(true);
-    impl->atAction->setEnabled(true);
-    impl->dropAtAction->setEnabled(true);
+    impl->createLinkedListAction->setEnabled(false);
+    impl->insertAtTheEndLinkedListAction->setEnabled(true);
+    impl->insertAtTheBeginningLinkedListAction->setEnabled(true);
+    impl->insertAfterLinkedListAction->setEnabled(true);
+    impl->atLinkedListAction->setEnabled(true);
+    impl->dropAtLinkedListAction->setEnabled(true);
 }
 
 /**
@@ -300,12 +302,12 @@ void MainWindow::dropAtLinkedList()
 
     if (scene->getLinkedListLastIndex() == 0)
     {
-        impl->createAction->setEnabled(true);
-        impl->insertAtTheEndAction->setEnabled(false);
-        impl->insertAtTheBeginningAction->setEnabled(false);
-        impl->insertAfter->setEnabled(false);
-        impl->atAction->setEnabled(false);
-        impl->dropAtAction->setEnabled(false);
+        impl->createLinkedListAction->setEnabled(true);
+        impl->insertAtTheEndLinkedListAction->setEnabled(false);
+        impl->insertAtTheBeginningLinkedListAction->setEnabled(false);
+        impl->insertAfterLinkedListAction->setEnabled(false);
+        impl->atLinkedListAction->setEnabled(false);
+        impl->dropAtLinkedListAction->setEnabled(false);
     }
 
     scene->dropAtIndexLinkedList(index);
