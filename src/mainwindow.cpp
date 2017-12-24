@@ -19,6 +19,7 @@ class MainWindow::Impl
 public:
 
     QMenu* linkedListMenu;
+    QMenu* doubleLinkedListMenu;
 
     QAction* createLinkedListAction;
     QAction* insertAtTheEndLinkedListAction;
@@ -26,6 +27,8 @@ public:
     QAction* insertAfterLinkedListAction;
     QAction* atLinkedListAction;
     QAction* dropAtLinkedListAction;
+
+    QAction* createDoubleLinkedListAction;
 
     QGraphicsView* view;
 
@@ -71,6 +74,8 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& insertAfterLinkedListAction = impl->insertAfterLinkedListAction;
     auto& atLinkedListAction = impl->atLinkedListAction;
     auto& dropAtLinkedListAction = impl->dropAtLinkedListAction;
+
+    auto& createDoubleLinkedListAction = impl->createDoubleLinkedListAction;
 
     createLinkedListAction = new QAction("Create");
     connect(
@@ -120,6 +125,8 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(dropAtLinkedList())
     );
 
+    createDoubleLinkedListAction = new QAction("Create");
+
     auto& linkedListMenu = impl->linkedListMenu;
     linkedListMenu = menuBar()->addMenu("Linked list");
     linkedListMenu->addAction(createLinkedListAction);
@@ -128,6 +135,10 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     linkedListMenu->addAction(insertAfterLinkedListAction);
     linkedListMenu->addAction(atLinkedListAction);
     linkedListMenu->addAction(dropAtLinkedListAction);
+
+    auto& doubleLinkedListMenu = impl->doubleLinkedListMenu;
+    doubleLinkedListMenu = menuBar()->addMenu("Double linked list");
+    doubleLinkedListMenu->addAction(createDoubleLinkedListAction);
 
     insertAtTheEndLinkedListAction->setEnabled(false);
     insertAtTheBeginningLinkedListAction->setEnabled(false);
