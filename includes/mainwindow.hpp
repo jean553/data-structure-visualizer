@@ -74,6 +74,14 @@ private slots:
      */
     void dropAtLinkedList();
 
+    /**
+     * @brief called by the double linked list menu create action;
+     * displays the popup that asks for the double linked list first value
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void createDoubleLinkedList();
+
 private:
 
     class Impl;
