@@ -126,6 +126,12 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     );
 
     createDoubleLinkedListAction = new QAction("Create");
+    connect(
+        createDoubleLinkedListAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(createDoubleLinkedList())
+    );
 
     auto& linkedListMenu = impl->linkedListMenu;
     linkedListMenu = menuBar()->addMenu("Linked list");
@@ -184,6 +190,8 @@ void MainWindow::createLinkedList()
     impl->insertAfterLinkedListAction->setEnabled(true);
     impl->atLinkedListAction->setEnabled(true);
     impl->dropAtLinkedListAction->setEnabled(true);
+
+    impl->createDoubleLinkedListAction->setEnabled(false);
 }
 
 /**
@@ -322,4 +330,32 @@ void MainWindow::dropAtLinkedList()
     }
 
     scene->dropAtIndexLinkedList(index);
+}
+
+/**
+ *
+ */
+void MainWindow::createDoubleLinkedList()
+{
+    bool set {false};
+
+    const int data = QInputDialog::getInt(
+        this,
+        "Double linked list",
+        "Double linked list first node data:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    /* FIXME: call the library double linked list creation function */
+
+    impl->createLinkedListAction->setEnabled(false);
+    impl->createDoubleLinkedListAction->setEnabled(false);
 }
