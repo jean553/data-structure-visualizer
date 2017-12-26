@@ -1,5 +1,5 @@
-#ifndef SCENE_H_
-#define SCENE_H_
+#ifndef LINKEDLIST_H_
+#define LINKEDLIST_H_
 
 #include <memory>
 
