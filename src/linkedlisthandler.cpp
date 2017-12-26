@@ -5,8 +5,9 @@
 #include "linked_list.h"
 
 #include <QPointer>
+#include <QGraphicsScene>
 
-class Scene::Impl
+class LinkedListHandler::Impl
 {
 
 public:
@@ -20,68 +21,60 @@ public:
 /**
  *
  */
-Scene::Scene() : impl(std::make_unique<Impl>())
+LinkedListHandler::LinkedListHandler() : impl(std::make_unique<Impl>())
 {
 }
 
 /**
  *
  */
-Scene::~Scene() = default;
+LinkedListHandler::~LinkedListHandler() = default;
 
 /**
  *
  */
-void Scene::createLinkedList(const int& data) &
+void LinkedListHandler::createLinkedList(const int& data) &
 {
     impl->list = create(data);
-
-    render();
 }
 
 /**
  *
  */
-void Scene::insertAtTheEndLinkedList(const int& data) &
+void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
 {
     insertAtTheEnd(
         &impl->list,
         data
     );
-
-    render();
 }
 
 /**
  *
  */
-void Scene::insertAtTheBeginningLinkedList(const int& data) &
+void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
 {
     insertAtTheBeginning(
         &impl->list,
         data
     );
-
-    render();
 }
 
 /**
  *
  */
-void Scene::dropAtIndexLinkedList(const int& index) &
+void LinkedListHandler::dropAtIndexLinkedList(const int& index) &
 {
     dropAt(
         &impl->list,
         index
     );
-
-    render();
 }
 
 /**
  *
  */
-void Scene::insertAfterLinkedList(
+void LinkedListHandler::insertAfterLinkedList(
     const int& index,
     const int& data
 ) &
@@ -91,14 +84,12 @@ void Scene::insertAfterLinkedList(
         index,
         data
     );
-
-    render();
 }
 
 /**
  *
  */
-const unsigned int Scene::getLinkedListLastIndex() const &
+const unsigned int LinkedListHandler::getLinkedListLastIndex() const &
 {
     return ::size(&impl->list) - 1;
 }
@@ -106,9 +97,12 @@ const unsigned int Scene::getLinkedListLastIndex() const &
 /**
  *
  */
-void Scene::selectItem(const int& index) &
+void LinkedListHandler::selectItem(
+    const QGraphicsScene* scene,
+    const int& index
+) &
 {
-    auto allItems = items(Qt::AscendingOrder);
+    auto allItems = scene->items(Qt::AscendingOrder);
     const auto length = allItems.size();
 
     constexpr int UNSELECTED_COLOR_RED {0};
@@ -177,9 +171,9 @@ void Scene::selectItem(const int& index) &
 /**
  *
  */
-void Scene::render() &
+void LinkedListHandler::render(QGraphicsScene* scene) &
 {
-    clear();
+    scene->clear();
 
     const auto length = ::size(&impl->list);
 
@@ -216,10 +210,10 @@ void Scene::render() &
                 item
             );
 
-            addItem(line);
+            scene->addItem(line);
         }
 
-        addItem(item);
+        scene->addItem(item);
 
         lastItem = item;
     }
@@ -228,6 +222,6 @@ void Scene::render() &
 /**
  *
  */
-void Scene::createDoubleLinkedList(const int& data) const &
+void LinkedListHandler::createDoubleLinkedList(const int& data) const &
 {
 }
