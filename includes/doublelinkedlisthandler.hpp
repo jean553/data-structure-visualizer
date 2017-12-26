@@ -16,8 +16,6 @@ public:
      * create a new double linked list item
      *
      * @param data the data to insert into the first node
-     *
-     * TODO: should be moved into a double linked list scene
      */
     void createDoubleLinkedList(const int& data) const &;
 };
