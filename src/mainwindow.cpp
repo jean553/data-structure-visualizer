@@ -1,6 +1,8 @@
 #include "mainwindow.hpp"
-#include "linkedlisthandler.hpp"
 #include "insertdialog.hpp"
+
+#include "linkedlisthandler.hpp"
+#include "doublelinkedlisthandler.hpp"
 
 #include <QMenuBar>
 #include <QMenu>
@@ -33,7 +35,9 @@ public:
     QGraphicsView* view;
     QGraphicsScene* scene;
 
+    /* XXX: use smart pointers, these classes are not part of Qt */
     LinkedListHandler* linkedListHandler;
+    DoubleLinkedListHandler* doubleLinkedListHandler;
 };
 
 /**
@@ -49,10 +53,13 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     );
 
     auto& linkedListHandler = impl->linkedListHandler;
+    auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
+
     auto& view = impl->view;
     auto& scene = impl->scene;
 
     linkedListHandler = new LinkedListHandler();
+    doubleLinkedListHandler = new DoubleLinkedListHandler();
 
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
@@ -370,7 +377,7 @@ void MainWindow::createDoubleLinkedList()
         return;
     }
 
-    impl->linkedListHandler->createDoubleLinkedList(data);
+    impl->doubleLinkedListHandler->createDoubleLinkedList(data);
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
