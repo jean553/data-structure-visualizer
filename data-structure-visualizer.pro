@@ -10,7 +10,8 @@ HEADERS = includes/mainwindow.hpp \
     includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
     includes/lineitem.hpp \
-    includes/linkedlisthandler.hpp
+    includes/linkedlisthandler.hpp \
+    includes/doublelinkedlisthandler.hpp
 
 release:DESTDIR = release
 release:OBJECTS_DIR = release
@@ -37,7 +38,8 @@ SOURCES += src/main.cpp \
     src/insertdialog.cpp \
     src/linkedlistitem.cpp \
     src/lineitem.cpp \
-    src/linkedlisthandler.cpp
+    src/linkedlisthandler.cpp \
+    src/doublelinkedlisthandler.cpp
 QT += widgets
 CONFIG += c++14
 LIBS += -L"c-data-structures/build/linked_list/" -llinked_list
