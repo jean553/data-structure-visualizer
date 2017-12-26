@@ -354,7 +354,7 @@ void MainWindow::createDoubleLinkedList()
         return;
     }
 
-    /* FIXME: call the library double linked list creation function */
+    impl->scene->createDoubleLinkedList(data);
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);

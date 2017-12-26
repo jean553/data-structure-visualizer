@@ -224,3 +224,10 @@ void Scene::render() &
         lastItem = item;
     }
 }
+
+/**
+ *
+ */
+void Scene::createDoubleLinkedList(const int& data) const &
+{
+}
