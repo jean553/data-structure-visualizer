@@ -91,6 +91,16 @@ public:
      */
     void selectItem(const int& index) &;
 
+    /**
+     * @brief called from the double linked list menu create action;
+     * create a new double linked list item
+     *
+     * @param data the data to insert into the first node
+     *
+     * TODO: should be moved into a double linked list scene
+     */
+    void createDoubleLinkedList(const int& data) const &;
+
 private:
 
     /**
