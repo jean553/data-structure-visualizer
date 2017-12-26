@@ -1,5 +1,5 @@
 #include "mainwindow.hpp"
-#include "scene.hpp"
+#include "linkedlisthandler.hpp"
 #include "insertdialog.hpp"
 
 #include <QMenuBar>
@@ -31,6 +31,7 @@ public:
     QAction* createDoubleLinkedListAction;
 
     QGraphicsView* view;
+    QGraphicsScene* scene;
 
     Scene* linkedListHandler;
 };
@@ -49,13 +50,17 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
 
     auto& linkedListHandler = impl->linkedListHandler;
     auto& view = impl->view;
+    auto& scene = impl->scene;
 
     linkedListHandler = new Scene();
+
+    scene = new QGraphicsScene();
+    view = new QGraphicsView(scene);
 
     /* set here in order to use the window dimensions */
     constexpr int WINDOW_ORIGINS {0};
     constexpr int SCENE_MARGINS {50};
-    linkedListHandler->setSceneRect(
+    scene->setSceneRect(
         QRectF(
             WINDOW_ORIGINS,
             WINDOW_ORIGINS,
@@ -63,8 +68,6 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
             WINDOW_HEIGHT - SCENE_MARGINS
         )
     );
-
-    view = new QGraphicsView(linkedListHandler);
 
     auto& createLinkedListAction = impl->createLinkedListAction;
     auto& insertAtTheEndLinkedListAction =
