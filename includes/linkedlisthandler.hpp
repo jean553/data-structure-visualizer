@@ -86,6 +86,9 @@ public:
      * @brief highlight one item at the given index in red color
      *
      * @param index the index of the item to highlight
+     *
+     * TODO: #48 after refactoring, this feature does not work anymore,
+     * nothing happens; I should investigate why...
      */
     void selectItem(
         const QGraphicsScene* scene,
