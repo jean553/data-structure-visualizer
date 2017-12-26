@@ -32,7 +32,7 @@ public:
 
     QGraphicsView* view;
 
-    Scene* scene;
+    Scene* linkedListHandler;
 };
 
 /**
@@ -47,15 +47,15 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         WINDOW_HEIGHT
     );
 
-    auto& scene = impl->scene;
+    auto& linkedListHandler = impl->linkedListHandler;
     auto& view = impl->view;
 
-    scene = new Scene();
+    linkedListHandler = new Scene();
 
     /* set here in order to use the window dimensions */
     constexpr int WINDOW_ORIGINS {0};
     constexpr int SCENE_MARGINS {50};
-    scene->setSceneRect(
+    linkedListHandler->setSceneRect(
         QRectF(
             WINDOW_ORIGINS,
             WINDOW_ORIGINS,
@@ -64,7 +64,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         )
     );
 
-    view = new QGraphicsView(scene);
+    view = new QGraphicsView(linkedListHandler);
 
     auto& createLinkedListAction = impl->createLinkedListAction;
     auto& insertAtTheEndLinkedListAction =
@@ -182,7 +182,7 @@ void MainWindow::createLinkedList()
         return;
     }
 
-    impl->scene->createLinkedList(data);
+    impl->linkedListHandler->createLinkedList(data);
 
     impl->createLinkedListAction->setEnabled(false);
     impl->insertAtTheEndLinkedListAction->setEnabled(true);
@@ -216,7 +216,7 @@ void MainWindow::insertAtTheEndLinkedList()
         return;
     }
 
-    impl->scene->insertAtTheEndLinkedList(data);
+    impl->linkedListHandler->insertAtTheEndLinkedList(data);
 }
 
 /**
@@ -241,7 +241,7 @@ void MainWindow::insertAtTheBeginningLinkedList()
         return;
     }
 
-    impl->scene->insertAtTheBeginningLinkedList(data);
+    impl->linkedListHandler->insertAtTheBeginningLinkedList(data);
 }
 
 /**
@@ -251,9 +251,9 @@ void MainWindow::insertAfterLinkedList()
 {
     bool set {false};
 
-    auto& scene = impl->scene;
+    auto& linkedListHandler = impl->linkedListHandler;
 
-    const auto maximumIndex = scene->getLinkedListLastIndex();
+    const auto maximumIndex = linkedListHandler->getLinkedListLastIndex();
     InsertDialog* dialog = new InsertDialog(maximumIndex);
 
     auto ok = dialog->exec();
@@ -262,7 +262,7 @@ void MainWindow::insertAfterLinkedList()
         return;
     }
 
-    scene->insertAfterLinkedList(
+    linkedListHandler->insertAfterLinkedList(
         dialog->getIndex(),
         dialog->getData()
     );
@@ -275,7 +275,7 @@ void MainWindow::atLinkedList()
 {
     bool set {false};
 
-    auto& scene = impl->scene;
+    auto& linkedListHandler = impl->linkedListHandler;
 
     const int index = QInputDialog::getInt(
         this,
@@ -283,7 +283,7 @@ void MainWindow::atLinkedList()
         "Get data at index:",
         DEFAULT_VALUE,
         MINIMUM_VALUE,
-        scene->getLinkedListLastIndex(),
+        linkedListHandler->getLinkedListLastIndex(),
         STEP,
         &set
     );
@@ -292,7 +292,7 @@ void MainWindow::atLinkedList()
         return;
     }
 
-    scene->selectItem(index);
+    linkedListHandler->selectItem(index);
 }
 
 /**
@@ -302,7 +302,7 @@ void MainWindow::dropAtLinkedList()
 {
     bool set {false};
 
-    auto& scene = impl->scene;
+    auto& linkedListHandler = impl->linkedListHandler;
 
     const int index = QInputDialog::getInt(
         this,
@@ -310,7 +310,7 @@ void MainWindow::dropAtLinkedList()
         "Drop at index:",
         DEFAULT_VALUE,
         MINIMUM_VALUE,
-        scene->getLinkedListLastIndex(),
+        linkedListHandler->getLinkedListLastIndex(),
         STEP,
         &set
     );
@@ -319,7 +319,7 @@ void MainWindow::dropAtLinkedList()
         return;
     }
 
-    if (scene->getLinkedListLastIndex() == 0)
+    if (linkedListHandler->getLinkedListLastIndex() == 0)
     {
         impl->createLinkedListAction->setEnabled(true);
         impl->insertAtTheEndLinkedListAction->setEnabled(false);
@@ -329,7 +329,7 @@ void MainWindow::dropAtLinkedList()
         impl->dropAtLinkedListAction->setEnabled(false);
     }
 
-    scene->dropAtIndexLinkedList(index);
+    linkedListHandler->dropAtIndexLinkedList(index);
 }
 
 /**
@@ -354,7 +354,7 @@ void MainWindow::createDoubleLinkedList()
         return;
     }
 
-    impl->scene->createDoubleLinkedList(data);
+    impl->linkedListHandler->createDoubleLinkedList(data);
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
