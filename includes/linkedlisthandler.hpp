@@ -1,27 +1,25 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include <QGraphicsScene>
-
 #include <memory>
 
 struct LinkedList;
+class QGraphicsScene;
 
-class Scene : public QGraphicsScene
+class LinkedListHandler
 {
-    Q_OBJECT
 
 public:
 
     /**
      * @brief scene constructor
      */
-    Scene();
+    LinkedListHandler();
 
     /**
      * @brief default destructor
      */
-    ~Scene();
+    ~LinkedListHandler();
 
     /**
      * @brief called from the linked list menu creation action;
@@ -89,7 +87,10 @@ public:
      *
      * @param index the index of the item to highlight
      */
-    void selectItem(const int& index) &;
+    void selectItem(
+        const QGraphicsScene* scene,
+        const int& index
+    ) &;
 
     /**
      * @brief called from the double linked list menu create action;
@@ -101,13 +102,15 @@ public:
      */
     void createDoubleLinkedList(const int& data) const &;
 
-private:
-
     /**
      * @brief clears the scene and updates it according to the linked list;
      * creates the required items and prints them on the scene
+     *
+     * @param scene the scene to use for rendering
      */
-    void render() &;
+    void render(QGraphicsScene* scene) &;
+
+private:
 
     class Impl;
     const std::unique_ptr<Impl> impl;

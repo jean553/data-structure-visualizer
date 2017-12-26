@@ -33,7 +33,7 @@ public:
     QGraphicsView* view;
     QGraphicsScene* scene;
 
-    Scene* linkedListHandler;
+    LinkedListHandler* linkedListHandler;
 };
 
 /**
@@ -52,7 +52,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& view = impl->view;
     auto& scene = impl->scene;
 
-    linkedListHandler = new Scene();
+    linkedListHandler = new LinkedListHandler();
 
     scene = new QGraphicsScene();
     view = new QGraphicsView(scene);
@@ -185,7 +185,9 @@ void MainWindow::createLinkedList()
         return;
     }
 
-    impl->linkedListHandler->createLinkedList(data);
+    auto& linkedListHandler = impl->linkedListHandler;
+    linkedListHandler->createLinkedList(data);
+    linkedListHandler->render(impl->scene);
 
     impl->createLinkedListAction->setEnabled(false);
     impl->insertAtTheEndLinkedListAction->setEnabled(true);
@@ -219,7 +221,9 @@ void MainWindow::insertAtTheEndLinkedList()
         return;
     }
 
-    impl->linkedListHandler->insertAtTheEndLinkedList(data);
+    auto& linkedListHandler = impl->linkedListHandler;
+    linkedListHandler->insertAtTheEndLinkedList(data);
+    linkedListHandler->render(impl->scene);
 }
 
 /**
@@ -244,7 +248,9 @@ void MainWindow::insertAtTheBeginningLinkedList()
         return;
     }
 
-    impl->linkedListHandler->insertAtTheBeginningLinkedList(data);
+    auto& linkedListHandler = impl->linkedListHandler;
+    linkedListHandler->insertAtTheBeginningLinkedList(data);
+    linkedListHandler->render(impl->scene);
 }
 
 /**
@@ -269,6 +275,7 @@ void MainWindow::insertAfterLinkedList()
         dialog->getIndex(),
         dialog->getData()
     );
+    linkedListHandler->render(impl->scene);
 }
 
 /**
@@ -295,7 +302,12 @@ void MainWindow::atLinkedList()
         return;
     }
 
-    linkedListHandler->selectItem(index);
+    auto& scene = impl->scene;
+    linkedListHandler->selectItem(
+        scene,
+        index
+    );
+    linkedListHandler->render(scene);
 }
 
 /**
@@ -333,6 +345,7 @@ void MainWindow::dropAtLinkedList()
     }
 
     linkedListHandler->dropAtIndexLinkedList(index);
+    linkedListHandler->render(impl->scene);
 }
 
 /**
