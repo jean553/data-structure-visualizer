@@ -1,5 +1,5 @@
-#ifndef SCENE_H_
-#define SCENE_H_
+#ifndef LINKEDLIST_H_
+#define LINKEDLIST_H_
 
 #include <memory>
 
@@ -94,16 +94,6 @@ public:
         const QGraphicsScene* scene,
         const int& index
     ) &;
-
-    /**
-     * @brief called from the double linked list menu create action;
-     * create a new double linked list item
-     *
-     * @param data the data to insert into the first node
-     *
-     * TODO: should be moved into a double linked list scene
-     */
-    void createDoubleLinkedList(const int& data) const &;
 
     /**
      * @brief clears the scene and updates it according to the linked list;

@@ -218,10 +218,3 @@ void LinkedListHandler::render(QGraphicsScene* scene) &
         lastItem = item;
     }
 }
-
-/**
- *
- */
-void LinkedListHandler::createDoubleLinkedList(const int& data) const &
-{
-}
