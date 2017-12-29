@@ -171,50 +171,18 @@ void LinkedListHandler::selectItem(
 /**
  *
  */
-void LinkedListHandler::render(QGraphicsScene* scene) &
+const unsigned int LinkedListHandler::getSize() const &
 {
-    scene->clear();
+    return ::size(&impl->list);
+}
 
-    const auto length = ::size(&impl->list);
-
-    qreal horizontalPosition {10.0};
-    qreal verticalPosition {10.0};
-
-    QPointer<LinkedListItem> lastItem;
-
-    for (
-        auto index = 0;
-        index < length;
-        index += 1
-    ) {
-
-        const auto data = ::at(
-            &impl->list,
-            index
-        );
-
-        constexpr qreal ITEMS_DISTANCE {50.0};
-        horizontalPosition += ITEMS_DISTANCE;
-        verticalPosition += ITEMS_DISTANCE;
-
-        LinkedListItem* item = new LinkedListItem(data);
-        item->setPos(
-            horizontalPosition,
-            verticalPosition
-        );
-
-        if (not lastItem.isNull())
-        {
-            LineItem* line = new LineItem(
-                lastItem,
-                item
-            );
-
-            scene->addItem(line);
-        }
-
-        scene->addItem(item);
-
-        lastItem = item;
-    }
+/**
+ *
+ */
+const unsigned int LinkedListHandler::getData(const unsigned short& index) const &
+{
+    return ::at(
+        &impl->list,
+        index
+    );
 }
