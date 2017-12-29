@@ -96,12 +96,18 @@ public:
     ) &;
 
     /**
-     * @brief clears the scene and updates it according to the linked list;
-     * creates the required items and prints them on the scene
+     * @brief getter of the linked list size
      *
-     * @param scene the scene to use for rendering
+     * @return const unsigned int
      */
-    void render(QGraphicsScene* scene) &;
+    const unsigned int getSize() const &;
+
+    /**
+     * @brief getter of the linked list value at the given index
+     *
+     * @return const unsigned int
+     */
+    const unsigned int getData(const unsigned short& index) const &;
 
 private:
 
