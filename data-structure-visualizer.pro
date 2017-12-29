@@ -7,7 +7,8 @@ TARGET = data-structure-visualizer
 INCLUDEPATH += includes/ \
     c-data-structures/linked_list/ \
     c-data-structures/double_linked_list/
-HEADERS = includes/mainwindow.hpp \
+HEADERS = includes/renderer.hpp \
+    includes/mainwindow.hpp \
     includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
     includes/lineitem.hpp \
@@ -35,6 +36,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Input
 SOURCES += src/main.cpp \
+    src/renderer.cpp \
     src/mainwindow.cpp \
     src/insertdialog.cpp \
     src/linkedlistitem.cpp \
