@@ -5,7 +5,8 @@
 TEMPLATE = app
 TARGET = data-structure-visualizer
 INCLUDEPATH += includes/ \
-    c-data-structures/linked_list/
+    c-data-structures/linked_list/ \
+    c-data-structures/double_linked_list/
 HEADERS = includes/mainwindow.hpp \
     includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
