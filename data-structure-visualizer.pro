@@ -5,7 +5,8 @@
 TEMPLATE = app
 TARGET = data-structure-visualizer
 INCLUDEPATH += includes/ \
-    c-data-structures/linked_list/
+    c-data-structures/linked_list/ \
+    c-data-structures/double_linked_list/
 HEADERS = includes/mainwindow.hpp \
     includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
@@ -42,4 +43,4 @@ SOURCES += src/main.cpp \
     src/doublelinkedlisthandler.cpp
 QT += widgets
 CONFIG += c++14
-LIBS += -L"c-data-structures/build/linked_list/" -llinked_list
+LIBS += -L"c-data-structures/build/linked_list/" -L"c-data-structures/build/double_linked_list/" -llinked_list -ldouble_linked_list
