@@ -33,7 +33,7 @@ LinkedListHandler::~LinkedListHandler() = default;
 /**
  *
  */
-void LinkedListHandler::createLinkedList(const int& data) &
+void LinkedListHandler::createLinkedList(const int& data) const & noexcept
 {
     impl->list = createLL(data);
 }
@@ -41,7 +41,7 @@ void LinkedListHandler::createLinkedList(const int& data) &
 /**
  *
  */
-void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
+void LinkedListHandler::insertAtTheEndLinkedList(const int& data) const & noexcept
 {
     insertAtTheEndLL(
         &impl->list,
@@ -52,7 +52,7 @@ void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
 /**
  *
  */
-void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
+void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) const & noexcept
 {
     insertAtTheBeginningLL(
         &impl->list,
@@ -63,7 +63,7 @@ void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
 /**
  *
  */
-void LinkedListHandler::dropAtIndexLinkedList(const int& index) &
+void LinkedListHandler::dropAtIndexLinkedList(const int& index) const & noexcept
 {
     dropAtLL(
         &impl->list,
@@ -77,7 +77,7 @@ void LinkedListHandler::dropAtIndexLinkedList(const int& index) &
 void LinkedListHandler::insertAfterLinkedList(
     const int& index,
     const int& data
-) &
+) const & noexcept
 {
     insertAfterLL(
         &impl->list,
@@ -89,7 +89,7 @@ void LinkedListHandler::insertAfterLinkedList(
 /**
  *
  */
-const unsigned int LinkedListHandler::getLinkedListLastIndex() const &
+const unsigned int LinkedListHandler::getLinkedListLastIndex() const & noexcept
 {
     return sizeLL(&impl->list) - 1;
 }
@@ -100,9 +100,9 @@ const unsigned int LinkedListHandler::getLinkedListLastIndex() const &
 void LinkedListHandler::selectItem(
     const QGraphicsScene* scene,
     const int& index
-) &
+) const &
 {
-    auto allItems = scene->items(Qt::AscendingOrder);
+    const auto& allItems = scene->items(Qt::AscendingOrder);
     const auto length = allItems.size();
 
     constexpr int UNSELECTED_COLOR_RED {0};
@@ -171,7 +171,7 @@ void LinkedListHandler::selectItem(
 /**
  *
  */
-const unsigned int LinkedListHandler::getSize() const &
+const unsigned int LinkedListHandler::getSize() const & noexcept
 {
     return sizeLL(&impl->list);
 }
@@ -179,7 +179,9 @@ const unsigned int LinkedListHandler::getSize() const &
 /**
  *
  */
-const unsigned int LinkedListHandler::getData(const unsigned short& index) const &
+const unsigned int LinkedListHandler::getData(
+    const unsigned short& index
+) const & noexcept
 {
     return atLL(
         &impl->list,
