@@ -26,40 +26,32 @@ public:
      * it clears the whole scene content and add a new item
      *
      * @param data the data to insert into the first node
-     *
-     * not const as adding an item to the scene modifies it
      */
-    void createLinkedList(const int& data) &;
+    void createLinkedList(const int& data) const & noexcept;
 
     /**
      * @brief called from the linked list menu end insertion action;
      * it creates a new linked list node to the end of the existing list
      *
      * @param data the data to insert into the last node
-     *
-     * not const as adding an item to the scene modifies it
      */
-    void insertAtTheEndLinkedList(const int& data) &;
+    void insertAtTheEndLinkedList(const int& data) const & noexcept;
 
     /**
      * @brief called from the linked list menu end insertion action;
      * it creates a new linked list node at the beginning of the existing list
      *
      * @param data the data to insert into the first node
-     *
-     * not const as adding an item to the scene modifies it
      */
-    void insertAtTheBeginningLinkedList(const int& data) &;
+    void insertAtTheBeginningLinkedList(const int& data) const & noexcept;
 
     /**
      * @brief called from the linked list menu drop at action;
      * it removes the linked list item at the given index
      *
      * @param index the index of the node to remove
-     *
-     * not const as adding an item to the scene modifies it
      */
-    void dropAtIndexLinkedList(const int& index) &;
+    void dropAtIndexLinkedList(const int& index) const & noexcept;
 
     /**
      * @brief called from the linked list menu insert after action
@@ -67,25 +59,25 @@ public:
      *
      * @param index specifies after which index the new node must be inserted
      * @param data the data to insert into the new node
-     *
-     * not const as adding an item to the scene modifies it
      */
     void insertAfterLinkedList(
         const int& index,
         const int& data
-    ) &;
+    ) const & noexcept;
 
     /**
      * @brief called from the linked list index popup
      *
      * @return const unsigned int
      */
-    const unsigned int getLinkedListLastIndex() const &;
+    const unsigned int getLinkedListLastIndex() const & noexcept;
 
     /**
      * @brief highlight one item at the given index in red color
      *
      * @param index the index of the item to highlight
+     *
+     * not noexcept has the Qt called functions are not noexcept
      *
      * TODO: #48 after refactoring, this feature does not work anymore,
      * nothing happens; I should investigate why...
@@ -93,21 +85,21 @@ public:
     void selectItem(
         const QGraphicsScene* scene,
         const int& index
-    ) &;
+    ) const &;
 
     /**
      * @brief getter of the linked list size
      *
      * @return const unsigned int
      */
-    const unsigned int getSize() const &;
+    const unsigned int getSize() const & noexcept;
 
     /**
      * @brief getter of the linked list value at the given index
      *
      * @return const unsigned int
      */
-    const unsigned int getData(const unsigned short& index) const &;
+    const unsigned int getData(const unsigned short& index) const & noexcept;
 
 private:
 
