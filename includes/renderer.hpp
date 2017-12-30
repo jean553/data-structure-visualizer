@@ -10,13 +10,15 @@ class QGraphicsScene;
  * @param scene the scene to use for rendering
  * @param structure the structure to render
  *
- * FIXME: use template to render any kind of list;
- * maybe rename the parameter structure to list
- * and the function name from render to renderList
+ * The type T is a list structure, it must contains:
+ * getSize(),
+ * getData()
+ *
  */
+template<typename T>
 void render(
     QGraphicsScene* scene,
-    LinkedListHandler* structure
+    T* structure
 );
 
 #endif

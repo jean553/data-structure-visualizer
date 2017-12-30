@@ -2,6 +2,7 @@
 #include "linkedlistitem.hpp"
 #include "lineitem.hpp"
 #include "linkedlisthandler.hpp"
+#include "doublelinkedlisthandler.hpp"
 
 #include <QGraphicsScene>
 #include <QPointer>
@@ -9,9 +10,10 @@
 /**
  *
  */
+template<typename T>
 void render(
     QGraphicsScene* scene,
-    LinkedListHandler* structure
+    T* structure
 )
 {
     scene->clear();
@@ -56,3 +58,19 @@ void render(
         lastItem = item;
     }
 }
+
+/**
+ *
+ */
+template void render<LinkedListHandler>(
+    QGraphicsScene* scene,
+    LinkedListHandler* structure
+);
+
+/**
+ *
+ */
+template void render<DoubleLinkedListHandler>(
+    QGraphicsScene* scene,
+    DoubleLinkedListHandler* structure
+);
