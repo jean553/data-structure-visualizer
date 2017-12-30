@@ -153,11 +153,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     doubleLinkedListMenu = menuBar()->addMenu("Double linked list");
     doubleLinkedListMenu->addAction(createDoubleLinkedListAction);
 
-    insertAtTheEndLinkedListAction->setEnabled(false);
-    insertAtTheBeginningLinkedListAction->setEnabled(false);
-    insertAfterLinkedListAction->setEnabled(false);
-    atLinkedListAction->setEnabled(false);
-    dropAtLinkedListAction->setEnabled(false);
+    initializeMenusOptions();
 
     setCentralWidget(view);
 }
@@ -197,13 +193,13 @@ void MainWindow::createLinkedList()
     );
 
     impl->createLinkedListAction->setEnabled(false);
+    impl->createDoubleLinkedListAction->setEnabled(false);
+
     impl->insertAtTheEndLinkedListAction->setEnabled(true);
     impl->insertAtTheBeginningLinkedListAction->setEnabled(true);
     impl->insertAfterLinkedListAction->setEnabled(true);
     impl->atLinkedListAction->setEnabled(true);
     impl->dropAtLinkedListAction->setEnabled(true);
-
-    impl->createDoubleLinkedListAction->setEnabled(false);
 }
 
 /**
@@ -359,14 +355,9 @@ void MainWindow::dropAtLinkedList()
         &linkedListHandler
     );
 
-    if (linkedListHandler.getLinkedListLastIndex() == 0)
+    if (linkedListHandler.getSize() == 0)
     {
-        impl->createLinkedListAction->setEnabled(true);
-        impl->insertAtTheEndLinkedListAction->setEnabled(false);
-        impl->insertAtTheBeginningLinkedListAction->setEnabled(false);
-        impl->insertAfterLinkedListAction->setEnabled(false);
-        impl->atLinkedListAction->setEnabled(false);
-        impl->dropAtLinkedListAction->setEnabled(false);
+        initializeMenusOptions();
     }
 }
 
@@ -401,4 +392,19 @@ void MainWindow::createDoubleLinkedList()
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
+}
+
+/**
+ *
+ */
+void MainWindow::initializeMenusOptions()
+{
+    impl->createLinkedListAction->setEnabled(true);
+    impl->createDoubleLinkedListAction->setEnabled(true);
+
+    impl->insertAtTheEndLinkedListAction->setEnabled(false);
+    impl->insertAtTheBeginningLinkedListAction->setEnabled(false);
+    impl->insertAfterLinkedListAction->setEnabled(false);
+    impl->atLinkedListAction->setEnabled(false);
+    impl->dropAtLinkedListAction->setEnabled(false);
 }

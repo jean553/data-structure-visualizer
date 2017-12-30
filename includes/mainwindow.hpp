@@ -84,6 +84,13 @@ private slots:
 
 private:
 
+    /**
+     * @brief initializes the status of the menus options at their initial states;
+     * refactored into one function as used at the construction of the window
+     * but also when the current data structure is totally destroyed
+     */
+    void initializeMenusOptions();
+
     class Impl;
     const std::unique_ptr<Impl> impl;
 };
