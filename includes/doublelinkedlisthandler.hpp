@@ -38,7 +38,7 @@ public:
      *
      * @return const unsigned int
      */
-    const unsigned int getData(const unsigned short& index) const &;
+    const unsigned int getData(const unsigned int& index) const &;
 
 private:
 
