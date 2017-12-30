@@ -35,7 +35,7 @@ LinkedListHandler::~LinkedListHandler() = default;
  */
 void LinkedListHandler::createLinkedList(const int& data) &
 {
-    impl->list = create(data);
+    impl->list = createLL(data);
 }
 
 /**
@@ -43,7 +43,7 @@ void LinkedListHandler::createLinkedList(const int& data) &
  */
 void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
 {
-    insertAtTheEnd(
+    insertAtTheEndLL(
         &impl->list,
         data
     );
@@ -54,7 +54,7 @@ void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
  */
 void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
 {
-    insertAtTheBeginning(
+    insertAtTheBeginningLL(
         &impl->list,
         data
     );
@@ -65,7 +65,7 @@ void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
  */
 void LinkedListHandler::dropAtIndexLinkedList(const int& index) &
 {
-    dropAt(
+    dropAtLL(
         &impl->list,
         index
     );
@@ -79,7 +79,7 @@ void LinkedListHandler::insertAfterLinkedList(
     const int& data
 ) &
 {
-    insertAfter(
+    insertAfterLL(
         &impl->list,
         index,
         data
@@ -91,7 +91,7 @@ void LinkedListHandler::insertAfterLinkedList(
  */
 const unsigned int LinkedListHandler::getLinkedListLastIndex() const &
 {
-    return ::size(&impl->list) - 1;
+    return sizeLL(&impl->list) - 1;
 }
 
 /**
@@ -171,50 +171,18 @@ void LinkedListHandler::selectItem(
 /**
  *
  */
-void LinkedListHandler::render(QGraphicsScene* scene) &
+const unsigned int LinkedListHandler::getSize() const &
 {
-    scene->clear();
+    return sizeLL(&impl->list);
+}
 
-    const auto length = ::size(&impl->list);
-
-    qreal horizontalPosition {10.0};
-    qreal verticalPosition {10.0};
-
-    QPointer<LinkedListItem> lastItem;
-
-    for (
-        auto index = 0;
-        index < length;
-        index += 1
-    ) {
-
-        const auto data = ::at(
-            &impl->list,
-            index
-        );
-
-        constexpr qreal ITEMS_DISTANCE {50.0};
-        horizontalPosition += ITEMS_DISTANCE;
-        verticalPosition += ITEMS_DISTANCE;
-
-        LinkedListItem* item = new LinkedListItem(data);
-        item->setPos(
-            horizontalPosition,
-            verticalPosition
-        );
-
-        if (not lastItem.isNull())
-        {
-            LineItem* line = new LineItem(
-                lastItem,
-                item
-            );
-
-            scene->addItem(line);
-        }
-
-        scene->addItem(item);
-
-        lastItem = item;
-    }
+/**
+ *
+ */
+const unsigned int LinkedListHandler::getData(const unsigned short& index) const &
+{
+    return atLL(
+        &impl->list,
+        index
+    );
 }

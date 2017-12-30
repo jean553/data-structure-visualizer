@@ -1,5 +1,6 @@
 #include "mainwindow.hpp"
 #include "insertdialog.hpp"
+#include "renderer.hpp"
 
 #include "linkedlisthandler.hpp"
 #include "doublelinkedlisthandler.hpp"
@@ -190,7 +191,10 @@ void MainWindow::createLinkedList()
 
     auto& linkedListHandler = impl->linkedListHandler;
     linkedListHandler.createLinkedList(data);
-    linkedListHandler.render(impl->scene);
+    ::render(
+        impl->scene,
+        &linkedListHandler
+    );
 
     impl->createLinkedListAction->setEnabled(false);
     impl->insertAtTheEndLinkedListAction->setEnabled(true);
@@ -226,7 +230,10 @@ void MainWindow::insertAtTheEndLinkedList()
 
     auto& linkedListHandler = impl->linkedListHandler;
     linkedListHandler.insertAtTheEndLinkedList(data);
-    linkedListHandler.render(impl->scene);
+    ::render(
+        impl->scene,
+        &linkedListHandler
+    );
 }
 
 /**
@@ -253,7 +260,10 @@ void MainWindow::insertAtTheBeginningLinkedList()
 
     auto& linkedListHandler = impl->linkedListHandler;
     linkedListHandler.insertAtTheBeginningLinkedList(data);
-    linkedListHandler.render(impl->scene);
+    ::render(
+        impl->scene,
+        &linkedListHandler
+    );
 }
 
 /**
@@ -278,7 +288,10 @@ void MainWindow::insertAfterLinkedList()
         dialog->getIndex(),
         dialog->getData()
     );
-    linkedListHandler.render(impl->scene);
+    ::render(
+        impl->scene,
+        &linkedListHandler
+    );
 }
 
 /**
@@ -310,7 +323,10 @@ void MainWindow::atLinkedList()
         scene,
         index
     );
-    linkedListHandler.render(scene);
+    ::render(
+        scene,
+        &linkedListHandler
+    );
 }
 
 /**
@@ -338,7 +354,10 @@ void MainWindow::dropAtLinkedList()
     }
 
     linkedListHandler.dropAtIndexLinkedList(index);
-    linkedListHandler.render(impl->scene);
+    ::render(
+        impl->scene,
+        &linkedListHandler
+    );
 
     if (linkedListHandler.getLinkedListLastIndex() == 0)
     {
@@ -373,7 +392,12 @@ void MainWindow::createDoubleLinkedList()
         return;
     }
 
-    impl->doubleLinkedListHandler.createDoubleLinkedList(data);
+    auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
+    doubleLinkedListHandler.createDoubleLinkedList(data);
+    ::render(
+        impl->scene,
+        &doubleLinkedListHandler
+    );
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);

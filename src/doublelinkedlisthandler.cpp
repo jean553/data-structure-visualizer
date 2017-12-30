@@ -30,3 +30,24 @@ void DoubleLinkedListHandler::createDoubleLinkedList(const int& data) const &
 {
     impl->list = create(data);
 }
+
+/**
+ *
+ */
+const unsigned int DoubleLinkedListHandler::getSize() const &
+{
+    return size(&impl->list);
+}
+
+/**
+ *
+ */
+const unsigned int DoubleLinkedListHandler::getData(
+    const unsigned int& index
+) const &
+{
+    return at(
+        &impl->list,
+        index
+    );
+}
