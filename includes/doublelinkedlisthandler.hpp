@@ -26,6 +26,20 @@ public:
      */
     void createDoubleLinkedList(const int& data) const &;
 
+    /**
+     * @brief getter of the double linked list size
+     *
+     * @return const unsigned int
+     */
+    const unsigned int getSize() const &;
+
+    /**
+     * @brief getter of the double linked list value at the given index
+     *
+     * @return const unsigned int
+     */
+    const unsigned int getData(const unsigned short& index) const &;
+
 private:
 
     class Impl;
