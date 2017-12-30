@@ -392,7 +392,12 @@ void MainWindow::createDoubleLinkedList()
         return;
     }
 
-    impl->doubleLinkedListHandler.createDoubleLinkedList(data);
+    auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
+    doubleLinkedListHandler.createDoubleLinkedList(data);
+    ::render(
+        impl->scene,
+        &doubleLinkedListHandler
+    );
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
