@@ -35,7 +35,7 @@ LinkedListHandler::~LinkedListHandler() = default;
  */
 void LinkedListHandler::createLinkedList(const int& data) &
 {
-    impl->list = create(data);
+    impl->list = createLL(data);
 }
 
 /**
@@ -43,7 +43,7 @@ void LinkedListHandler::createLinkedList(const int& data) &
  */
 void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
 {
-    insertAtTheEnd(
+    insertAtTheEndLL(
         &impl->list,
         data
     );
@@ -54,7 +54,7 @@ void LinkedListHandler::insertAtTheEndLinkedList(const int& data) &
  */
 void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
 {
-    insertAtTheBeginning(
+    insertAtTheBeginningLL(
         &impl->list,
         data
     );
@@ -65,7 +65,7 @@ void LinkedListHandler::insertAtTheBeginningLinkedList(const int& data) &
  */
 void LinkedListHandler::dropAtIndexLinkedList(const int& index) &
 {
-    dropAt(
+    dropAtLL(
         &impl->list,
         index
     );
@@ -79,7 +79,7 @@ void LinkedListHandler::insertAfterLinkedList(
     const int& data
 ) &
 {
-    insertAfter(
+    insertAfterLL(
         &impl->list,
         index,
         data
@@ -91,7 +91,7 @@ void LinkedListHandler::insertAfterLinkedList(
  */
 const unsigned int LinkedListHandler::getLinkedListLastIndex() const &
 {
-    return ::size(&impl->list) - 1;
+    return sizeLL(&impl->list) - 1;
 }
 
 /**
@@ -173,7 +173,7 @@ void LinkedListHandler::selectItem(
  */
 const unsigned int LinkedListHandler::getSize() const &
 {
-    return ::size(&impl->list);
+    return sizeLL(&impl->list);
 }
 
 /**
@@ -181,7 +181,7 @@ const unsigned int LinkedListHandler::getSize() const &
  */
 const unsigned int LinkedListHandler::getData(const unsigned short& index) const &
 {
-    return ::at(
+    return atLL(
         &impl->list,
         index
     );
