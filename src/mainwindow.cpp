@@ -52,9 +52,6 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         WINDOW_HEIGHT
     );
 
-    auto& linkedListHandler = impl->linkedListHandler;
-    auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
-
     auto& view = impl->view;
     auto& scene = impl->scene;
 
@@ -267,8 +264,6 @@ void MainWindow::insertAtTheBeginningLinkedList()
  */
 void MainWindow::insertAfterLinkedList()
 {
-    bool set {false};
-
     auto& linkedListHandler = impl->linkedListHandler;
 
     const auto maximumIndex = linkedListHandler.getLinkedListLastIndex();

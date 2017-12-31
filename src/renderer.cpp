@@ -26,7 +26,9 @@ void render(
     QPointer<LinkedListItem> lastItem;
 
     for (
-        auto index = 0;
+        /* force to unsigned integer in order to
+           be compared wih length that is this type */
+        unsigned int index = 0;
         index < length;
         index += 1
     ) {
