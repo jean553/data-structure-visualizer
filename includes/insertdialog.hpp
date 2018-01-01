@@ -26,21 +26,21 @@ public:
     /**
      * @brief getter for the given index
      *
-     * @return const int
+     * @return int
      */
-    const int getIndex();
+    int getIndex();
 
     /**
      * @brief getter fo the given data
      *
-     * @return const int
+     * @return int
      */
-    const int getData();
+    int getData();
 
 private:
 
     class Impl;
-    std::unique_ptr<Impl> impl;
+    const std::unique_ptr<Impl> impl;
 };
 
 #endif

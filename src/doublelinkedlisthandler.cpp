@@ -34,7 +34,7 @@ void DoubleLinkedListHandler::createDoubleLinkedList(const int& data) const &
 /**
  *
  */
-const unsigned int DoubleLinkedListHandler::getSize() const &
+unsigned int DoubleLinkedListHandler::getSize() const &
 {
     return size(&impl->list);
 }
@@ -42,7 +42,7 @@ const unsigned int DoubleLinkedListHandler::getSize() const &
 /**
  *
  */
-const unsigned int DoubleLinkedListHandler::getData(
+unsigned int DoubleLinkedListHandler::getData(
     const unsigned int& index
 ) const &
 {

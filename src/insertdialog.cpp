@@ -102,7 +102,7 @@ InsertDialog::~InsertDialog() = default;
 /**
  *
  */
-const int InsertDialog::getIndex()
+int InsertDialog::getIndex()
 {
     return impl->indexLine->value();
 }
@@ -110,7 +110,7 @@ const int InsertDialog::getIndex()
 /**
  *
  */
-const int InsertDialog::getData()
+int InsertDialog::getData()
 {
     return impl->dataLine->value();
 }

@@ -29,16 +29,16 @@ public:
     /**
      * @brief getter of the double linked list size
      *
-     * @return const unsigned int
+     * @return unsigned int
      */
-    const unsigned int getSize() const &;
+    unsigned int getSize() const &;
 
     /**
      * @brief getter of the double linked list value at the given index
      *
-     * @return const unsigned int
+     * @return unsigned int
      */
-    const unsigned int getData(const unsigned int& index) const &;
+    unsigned int getData(const unsigned int& index) const &;
 
 private:
 
