@@ -24,21 +24,29 @@ public:
      *
      * @param data the data to insert into the first node
      */
-    void createDoubleLinkedList(const int& data) const &;
+    void createDoubleLinkedList(const int& data) const & noexcept;
+
+    /**
+     * @brief called from the double linked list menu insert at the end action;
+     * add a new node to the double linked list at the end
+     *
+     * @param data the data to insert into the new node
+     */
+    void insertAtTheEndDoubleLinkedList(const int& data) const & noexcept;
 
     /**
      * @brief getter of the double linked list size
      *
      * @return unsigned int
      */
-    unsigned int getSize() const &;
+    unsigned int getSize() const & noexcept;
 
     /**
      * @brief getter of the double linked list value at the given index
      *
      * @return unsigned int
      */
-    unsigned int getData(const unsigned int& index) const &;
+    unsigned int getData(const unsigned int& index) const & noexcept;
 
 private:
 

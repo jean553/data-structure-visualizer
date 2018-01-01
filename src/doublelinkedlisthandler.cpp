@@ -26,7 +26,7 @@ DoubleLinkedListHandler::~DoubleLinkedListHandler() = default;
 /**
  *
  */
-void DoubleLinkedListHandler::createDoubleLinkedList(const int& data) const &
+void DoubleLinkedListHandler::createDoubleLinkedList(const int& data) const & noexcept
 {
     impl->list = create(data);
 }
@@ -34,7 +34,19 @@ void DoubleLinkedListHandler::createDoubleLinkedList(const int& data) const &
 /**
  *
  */
-unsigned int DoubleLinkedListHandler::getSize() const &
+void DoubleLinkedListHandler::insertAtTheEndDoubleLinkedList(const int& data)
+    const & noexcept
+{
+    insertAtTheEnd(
+        &impl->list,
+        data
+    );
+}
+
+/**
+ *
+ */
+unsigned int DoubleLinkedListHandler::getSize() const & noexcept
 {
     return size(&impl->list);
 }
@@ -44,7 +56,7 @@ unsigned int DoubleLinkedListHandler::getSize() const &
  */
 unsigned int DoubleLinkedListHandler::getData(
     const unsigned int& index
-) const &
+) const & noexcept
 {
     return at(
         &impl->list,
