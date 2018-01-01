@@ -89,7 +89,7 @@ void LinkedListHandler::insertAfterLinkedList(
 /**
  *
  */
-const unsigned int LinkedListHandler::getLinkedListLastIndex() const & noexcept
+unsigned int LinkedListHandler::getLinkedListLastIndex() const & noexcept
 {
     return sizeLL(&impl->list) - 1;
 }
@@ -171,7 +171,7 @@ void LinkedListHandler::selectItem(
 /**
  *
  */
-const unsigned int LinkedListHandler::getSize() const & noexcept
+unsigned int LinkedListHandler::getSize() const & noexcept
 {
     return sizeLL(&impl->list);
 }
@@ -179,7 +179,7 @@ const unsigned int LinkedListHandler::getSize() const & noexcept
 /**
  *
  */
-const unsigned int LinkedListHandler::getData(
+unsigned int LinkedListHandler::getData(
     const unsigned short& index
 ) const & noexcept
 {

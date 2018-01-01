@@ -68,9 +68,9 @@ public:
     /**
      * @brief called from the linked list index popup
      *
-     * @return const unsigned int
+     * @return unsigned int
      */
-    const unsigned int getLinkedListLastIndex() const & noexcept;
+    unsigned int getLinkedListLastIndex() const & noexcept;
 
     /**
      * @brief highlight one item at the given index in red color
@@ -90,16 +90,16 @@ public:
     /**
      * @brief getter of the linked list size
      *
-     * @return const unsigned int
+     * @return unsigned int
      */
-    const unsigned int getSize() const & noexcept;
+    unsigned int getSize() const & noexcept;
 
     /**
      * @brief getter of the linked list value at the given index
      *
-     * @return const unsigned int
+     * @return unsigned int
      */
-    const unsigned int getData(const unsigned short& index) const & noexcept;
+    unsigned int getData(const unsigned short& index) const & noexcept;
 
 private:
 
