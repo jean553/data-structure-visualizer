@@ -82,6 +82,14 @@ private slots:
      */
     void createDoubleLinkedList();
 
+    /**
+     * @brief called by the double linked list menu insert at the end action;
+     * displays the popup that asks for the double linked list value to insert
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void insertAtTheEndDoubleLinkedList();
+
 private:
 
     /**
