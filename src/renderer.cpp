@@ -48,11 +48,10 @@ void render(
         if (not lastItem.isNull())
         {
             LineItem* line = new LineItem(
+                scene,
                 lastItem,
                 item
             );
-
-            scene->addItem(line);
         }
 
         scene->addItem(item);
