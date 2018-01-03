@@ -90,6 +90,13 @@ private slots:
      */
     void insertAtTheEndDoubleLinkedList();
 
+    /**
+     * @brief called by the hashmap menu create action;
+     *
+     * TODO: to define
+     */
+    void createHashmap();
+
 private:
 
     /**

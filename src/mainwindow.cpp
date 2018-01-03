@@ -23,6 +23,7 @@ public:
 
     QMenu* linkedListMenu;
     QMenu* doubleLinkedListMenu;
+    QMenu* hashmapMenu;
 
     QAction* createLinkedListAction;
     QAction* insertAtTheEndLinkedListAction;
@@ -33,6 +34,8 @@ public:
 
     QAction* createDoubleLinkedListAction;
     QAction* insertAtTheEndDoubleLinkedListAction;
+
+    QAction* createHashmapAction;
 
     QGraphicsView* view;
     QGraphicsScene* scene;
@@ -83,6 +86,8 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& createDoubleLinkedListAction = impl->createDoubleLinkedListAction;
     auto& insertAtTheEndDoubleLinkedListAction =
         impl->insertAtTheEndDoubleLinkedListAction;
+
+    auto& createHashmapAction = impl->createHashmapAction;
 
     createLinkedListAction = new QAction("Create");
     connect(
@@ -148,6 +153,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(insertAtTheEndDoubleLinkedList())
     );
 
+    createHashmapAction = new QAction("Create");
+    connect(
+        createHashmapAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(createHashmap())
+    );
+
     auto& linkedListMenu = impl->linkedListMenu;
     linkedListMenu = menuBar()->addMenu("Linked list");
     linkedListMenu->addAction(createLinkedListAction);
@@ -161,6 +174,10 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     doubleLinkedListMenu = menuBar()->addMenu("Double linked list");
     doubleLinkedListMenu->addAction(createDoubleLinkedListAction);
     doubleLinkedListMenu->addAction(insertAtTheEndDoubleLinkedListAction);
+
+    auto& hashmapMenu = impl->hashmapMenu;
+    hashmapMenu = menuBar()->addMenu("Hashmap");
+    hashmapMenu->addAction(createHashmapAction);
 
     initializeMenusOptions();
 
@@ -431,6 +448,14 @@ void MainWindow::insertAtTheEndDoubleLinkedList()
         impl->scene,
         &doubleLinkedListHandler
     );
+}
+
+/**
+ *
+ */
+void MainWindow::createHashmap()
+{
+    /* TODO: to define */
 }
 
 /**
