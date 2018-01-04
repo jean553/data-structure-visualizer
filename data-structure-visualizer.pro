@@ -6,14 +6,16 @@ TEMPLATE = app
 TARGET = data-structure-visualizer
 INCLUDEPATH += includes/ \
     c-data-structures/linked_list/ \
-    c-data-structures/double_linked_list/
+    c-data-structures/double_linked_list/ \
+    c-data-structures/hashmap
 HEADERS = includes/renderer.hpp \
     includes/mainwindow.hpp \
     includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
     includes/lineitem.hpp \
     includes/linkedlisthandler.hpp \
-    includes/doublelinkedlisthandler.hpp
+    includes/doublelinkedlisthandler.hpp \
+    includes/hashmaphandler.hpp
 
 release:DESTDIR = release
 release:OBJECTS_DIR = release
@@ -42,7 +44,8 @@ SOURCES += src/main.cpp \
     src/linkedlistitem.cpp \
     src/lineitem.cpp \
     src/linkedlisthandler.cpp \
-    src/doublelinkedlisthandler.cpp
+    src/doublelinkedlisthandler.cpp \
+    src/hashmaphandler.cpp
 QT += widgets
 CONFIG += c++14
-LIBS += -L"c-data-structures/build/linked_list/" -L"c-data-structures/build/double_linked_list/" -llinked_list -ldouble_linked_list
+LIBS += -L"c-data-structures/build/linked_list/" -L"c-data-structures/build/double_linked_list/" -L"c-data-structures/build/hashmap/" -llinked_list -ldouble_linked_list -lhashmap
