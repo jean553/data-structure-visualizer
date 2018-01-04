@@ -4,6 +4,7 @@
 
 #include "linkedlisthandler.hpp"
 #include "doublelinkedlisthandler.hpp"
+#include "hashmaphandler.hpp"
 
 #include <QMenuBar>
 #include <QMenu>
@@ -42,6 +43,7 @@ public:
 
     LinkedListHandler linkedListHandler;
     DoubleLinkedListHandler doubleLinkedListHandler;
+    HashmapHandler hashmapHandler;
 };
 
 /**
@@ -455,7 +457,27 @@ void MainWindow::insertAtTheEndDoubleLinkedList()
  */
 void MainWindow::createHashmap()
 {
-    /* TODO: to define */
+    bool set {false};
+
+    const int size = QInputDialog::getInt(
+        this,
+        "Hashmap",
+        "Size of the hashmap:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    auto& hashmapHandler = impl->hashmapHandler;
+    hashmapHandler.createHashmap(size);
+
+    /* TODO: rendering */
 }
 
 /**
