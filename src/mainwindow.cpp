@@ -35,6 +35,7 @@ public:
 
     QAction* createDoubleLinkedListAction;
     QAction* insertAtTheEndDoubleLinkedListAction;
+    QAction* dropAtDoubleLinkedListAction;
 
     QAction* createHashmapAction;
 
@@ -88,6 +89,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& createDoubleLinkedListAction = impl->createDoubleLinkedListAction;
     auto& insertAtTheEndDoubleLinkedListAction =
         impl->insertAtTheEndDoubleLinkedListAction;
+    auto& dropAtDoubleLinkedListAction = impl->dropAtDoubleLinkedListAction;
 
     auto& createHashmapAction = impl->createHashmapAction;
 
@@ -155,6 +157,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(insertAtTheEndDoubleLinkedList())
     );
 
+    dropAtDoubleLinkedListAction = new QAction("Drop at");
+    connect(
+        dropAtDoubleLinkedListAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(dropAtDoubleLinkedList())
+    );
+
     createHashmapAction = new QAction("Create");
     connect(
         createHashmapAction,
@@ -176,6 +186,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     doubleLinkedListMenu = menuBar()->addMenu("Double linked list");
     doubleLinkedListMenu->addAction(createDoubleLinkedListAction);
     doubleLinkedListMenu->addAction(insertAtTheEndDoubleLinkedListAction);
+    doubleLinkedListMenu->addAction(dropAtDoubleLinkedListAction);
 
     auto& hashmapMenu = impl->hashmapMenu;
     hashmapMenu = menuBar()->addMenu("Hashmap");
@@ -420,6 +431,7 @@ void MainWindow::createDoubleLinkedList()
     impl->createDoubleLinkedListAction->setEnabled(false);
 
     impl->insertAtTheEndDoubleLinkedListAction->setEnabled(true);
+    impl->dropAtDoubleLinkedListAction->setEnabled(true);
 }
 
 /**
@@ -494,4 +506,5 @@ void MainWindow::initializeMenusOptions()
     impl->atLinkedListAction->setEnabled(false);
     impl->dropAtLinkedListAction->setEnabled(false);
     impl->insertAtTheEndDoubleLinkedListAction->setEnabled(false);
+    impl->dropAtDoubleLinkedListAction->setEnabled(false);
 }
