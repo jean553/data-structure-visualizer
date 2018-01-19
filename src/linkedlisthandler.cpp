@@ -74,6 +74,14 @@ void LinkedListHandler::dropAtIndexLinkedList(const int& index) const & noexcept
 /**
  *
  */
+void LinkedListHandler::dropAtTheEndLinkedList() const & noexcept
+{
+    dropAtTheEndLL(&impl->list);
+}
+
+/**
+ *
+ */
 void LinkedListHandler::insertAfterLinkedList(
     const int& index,
     const int& data
