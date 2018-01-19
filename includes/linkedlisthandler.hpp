@@ -54,6 +54,12 @@ public:
     void dropAtIndexLinkedList(const int& index) const & noexcept;
 
     /**
+     * @brief called from the linked list menu drop at the end action;
+     * it removes the last linked list node
+     */
+    void dropAtTheEndLinkedList() const & noexcept;
+
+    /**
      * @brief called from the linked list menu insert after action
      * it inserts the given data (node) after the given index
      *
