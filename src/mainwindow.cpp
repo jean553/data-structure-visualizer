@@ -32,6 +32,7 @@ public:
     QAction* insertAfterLinkedListAction;
     QAction* atLinkedListAction;
     QAction* dropAtLinkedListAction;
+    QAction* dropAtTheEndLinkedListAction;
 
     QAction* createDoubleLinkedListAction;
     QAction* insertAtTheEndDoubleLinkedListAction;
@@ -85,6 +86,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& insertAfterLinkedListAction = impl->insertAfterLinkedListAction;
     auto& atLinkedListAction = impl->atLinkedListAction;
     auto& dropAtLinkedListAction = impl->dropAtLinkedListAction;
+    auto& dropAtTheEndLinkedListAction = impl->dropAtTheEndLinkedListAction;
 
     auto& createDoubleLinkedListAction = impl->createDoubleLinkedListAction;
     auto& insertAtTheEndDoubleLinkedListAction =
@@ -141,6 +143,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(dropAtLinkedList())
     );
 
+    dropAtTheEndLinkedListAction = new QAction("Drop at the end");
+    connect(
+        dropAtTheEndLinkedListAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(dropAtTheEndLinkedList())
+    );
+
     createDoubleLinkedListAction = new QAction("Create");
     connect(
         createDoubleLinkedListAction,
@@ -181,6 +191,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     linkedListMenu->addAction(insertAfterLinkedListAction);
     linkedListMenu->addAction(atLinkedListAction);
     linkedListMenu->addAction(dropAtLinkedListAction);
+    linkedListMenu->addAction(dropAtTheEndLinkedListAction);
 
     auto& doubleLinkedListMenu = impl->doubleLinkedListMenu;
     doubleLinkedListMenu = menuBar()->addMenu("Double linked list");
@@ -239,6 +250,7 @@ void MainWindow::createLinkedList()
     impl->insertAfterLinkedListAction->setEnabled(true);
     impl->atLinkedListAction->setEnabled(true);
     impl->dropAtLinkedListAction->setEnabled(true);
+    impl->dropAtTheEndLinkedListAction->setEnabled(true);
 }
 
 /**
@@ -515,4 +527,5 @@ void MainWindow::initializeMenusOptions()
     impl->dropAtLinkedListAction->setEnabled(false);
     impl->insertAtTheEndDoubleLinkedListAction->setEnabled(false);
     impl->dropAtDoubleLinkedListAction->setEnabled(false);
+    impl->dropAtTheEndLinkedListAction->setEnabled(false);
 }
