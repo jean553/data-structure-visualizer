@@ -401,6 +401,14 @@ void MainWindow::dropAtLinkedList()
 /**
  *
  */
+void MainWindow::dropAtTheEndLinkedList()
+{
+    /* TODO */
+}
+
+/**
+ *
+ */
 void MainWindow::createDoubleLinkedList()
 {
     bool set {false};
