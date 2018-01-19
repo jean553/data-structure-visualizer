@@ -415,7 +415,18 @@ void MainWindow::dropAtLinkedList()
  */
 void MainWindow::dropAtTheEndLinkedList()
 {
-    /* TODO */
+    auto& linkedListHandler = impl->linkedListHandler;
+
+    linkedListHandler.dropAtTheEndLinkedList();
+    ::render(
+        impl->scene,
+        &linkedListHandler
+    );
+
+    if (linkedListHandler.getSize() == 0)
+    {
+        initializeMenusOptions();
+    }
 }
 
 /**
