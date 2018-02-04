@@ -35,6 +35,14 @@ public:
     void insertAtTheEndDoubleLinkedList(const int& data) const & noexcept;
 
     /**
+     * @brief called from the double linked list menu drop at action;
+     * delete the node at the given index
+     *
+     * @param index the index of the node to remove
+     */
+    void dropAtDoubleLinkedList(const unsigned int& index) const & noexcept;
+
+    /**
      * @brief getter of the double linked list size
      *
      * @return unsigned int
