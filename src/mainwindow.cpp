@@ -524,6 +524,11 @@ void MainWindow::dropAtDoubleLinkedList()
         impl->scene,
         &doubleLinkedListHandler
     );
+
+    if (doubleLinkedListHandler.getSize() == 0)
+    {
+        initializeMenusOptions();
+    }
 }
 
 /**
