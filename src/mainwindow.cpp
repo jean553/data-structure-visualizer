@@ -504,7 +504,7 @@ void MainWindow::dropAtDoubleLinkedList()
 
     auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
 
-    const int index = QInputDialog::getInt(
+    const unsigned int index = QInputDialog::getInt(
         this,
         "Double linked list",
         "Drop at index:",
@@ -519,7 +519,11 @@ void MainWindow::dropAtDoubleLinkedList()
         return;
     }
 
-    /* TODO: define library call */
+    doubleLinkedListHandler.dropAtDoubleLinkedList(index);
+    ::render(
+        impl->scene,
+        &doubleLinkedListHandler
+    );
 }
 
 /**
