@@ -99,6 +99,14 @@ private slots:
     void insertAtTheEndDoubleLinkedList();
 
     /**
+     * @brief called by the double linked list menu drop at action;
+     * displays the popup that asks for the double linked list node to remove
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void dropAtDoubleLinkedList();
+
+    /**
      * @brief called by the hashmap menu create action;
      *
      * TODO: to define

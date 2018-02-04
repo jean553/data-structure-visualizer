@@ -498,6 +498,33 @@ void MainWindow::insertAtTheEndDoubleLinkedList()
 /**
  *
  */
+void MainWindow::dropAtDoubleLinkedList()
+{
+    bool set {false};
+
+    auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
+
+    const int index = QInputDialog::getInt(
+        this,
+        "Double linked list",
+        "Drop at index:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        doubleLinkedListHandler.getLastIndex(),
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    /* TODO: define library call */
+}
+
+/**
+ *
+ */
 void MainWindow::createHashmap()
 {
     bool set {false};

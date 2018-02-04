@@ -42,6 +42,13 @@ public:
     unsigned int getSize() const & noexcept;
 
     /**
+     * @brief getter of the double linked list last node index
+     *
+     * @return unsigned int
+     */
+    unsigned int getLastIndex() const & noexcept;
+
+    /**
      * @brief getter of the double linked list value at the given index
      *
      * @return unsigned int
