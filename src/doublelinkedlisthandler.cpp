@@ -54,6 +54,14 @@ unsigned int DoubleLinkedListHandler::getSize() const & noexcept
 /**
  *
  */
+unsigned int DoubleLinkedListHandler::getLastIndex() const & noexcept
+{
+    return size(&impl->list) - 1;
+}
+
+/**
+ *
+ */
 unsigned int DoubleLinkedListHandler::getData(
     const unsigned int& index
 ) const & noexcept
