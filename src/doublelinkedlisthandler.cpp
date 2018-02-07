@@ -46,6 +46,18 @@ void DoubleLinkedListHandler::insertAtTheEndDoubleLinkedList(const int& data)
 /**
  *
  */
+void DoubleLinkedListHandler::insertAtTheBeginningDoubleLinkedList(const int& data)
+    const & noexcept
+{
+    insertAtTheBeginning(
+        &impl->list,
+        data
+    );
+}
+
+/**
+ *
+ */
 void DoubleLinkedListHandler::dropAtDoubleLinkedList(const unsigned int& index)
     const & noexcept
 {

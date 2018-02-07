@@ -35,6 +35,15 @@ public:
     void insertAtTheEndDoubleLinkedList(const int& data) const & noexcept;
 
     /**
+     * @brief called from the double linked list menu insert at the beginning action;
+     * add a new node to the double linked list at the beginning
+     *
+     *
+     * @param data the data to insert into the new node
+     */
+    void insertAtTheBeginningDoubleLinkedList(const int& data) const & noexcept;
+
+    /**
      * @brief called from the double linked list menu drop at action;
      * delete the node at the given index
      *
