@@ -35,6 +35,7 @@ public:
     QAction* dropAtTheEndLinkedListAction;
 
     QAction* createDoubleLinkedListAction;
+    QAction* insertAtTheBeginningDoubleLinkedListAction;
     QAction* insertAtTheEndDoubleLinkedListAction;
     QAction* dropAtDoubleLinkedListAction;
 
@@ -89,6 +90,8 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& dropAtTheEndLinkedListAction = impl->dropAtTheEndLinkedListAction;
 
     auto& createDoubleLinkedListAction = impl->createDoubleLinkedListAction;
+    auto& insertAtTheBeginningDoubleLinkedListAction =
+        impl->insertAtTheBeginningDoubleLinkedListAction;
     auto& insertAtTheEndDoubleLinkedListAction =
         impl->insertAtTheEndDoubleLinkedListAction;
     auto& dropAtDoubleLinkedListAction = impl->dropAtDoubleLinkedListAction;
@@ -167,6 +170,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(insertAtTheEndDoubleLinkedList())
     );
 
+    insertAtTheBeginningDoubleLinkedListAction = new QAction("Insert at the beginning");
+    connect(
+        insertAtTheBeginningDoubleLinkedListAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(insertAtTheBeginningDoubleLinkedList())
+    );
+
     dropAtDoubleLinkedListAction = new QAction("Drop at");
     connect(
         dropAtDoubleLinkedListAction,
@@ -196,6 +207,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& doubleLinkedListMenu = impl->doubleLinkedListMenu;
     doubleLinkedListMenu = menuBar()->addMenu("Double linked list");
     doubleLinkedListMenu->addAction(createDoubleLinkedListAction);
+    doubleLinkedListMenu->addAction(insertAtTheBeginningDoubleLinkedListAction);
     doubleLinkedListMenu->addAction(insertAtTheEndDoubleLinkedListAction);
     doubleLinkedListMenu->addAction(dropAtDoubleLinkedListAction);
 
@@ -462,6 +474,7 @@ void MainWindow::createDoubleLinkedList()
     impl->createDoubleLinkedListAction->setEnabled(false);
 
     impl->insertAtTheEndDoubleLinkedListAction->setEnabled(true);
+    impl->insertAtTheBeginningDoubleLinkedListAction->setEnabled(true);
     impl->dropAtDoubleLinkedListAction->setEnabled(true);
 }
 
@@ -489,6 +502,36 @@ void MainWindow::insertAtTheEndDoubleLinkedList()
 
     auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
     doubleLinkedListHandler.insertAtTheEndDoubleLinkedList(data);
+    ::render(
+        impl->scene,
+        &doubleLinkedListHandler
+    );
+}
+
+/**
+ *
+ */
+void MainWindow::insertAtTheBeginningDoubleLinkedList()
+{
+    bool set {false};
+
+    const int data = QInputDialog::getInt(
+        this,
+        "Double linked list",
+        "First data to insert:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    auto& doubleLinkedListHandler = impl->doubleLinkedListHandler;
+    doubleLinkedListHandler.insertAtTheBeginningDoubleLinkedList(data);
     ::render(
         impl->scene,
         &doubleLinkedListHandler
@@ -573,6 +616,7 @@ void MainWindow::initializeMenusOptions()
     impl->atLinkedListAction->setEnabled(false);
     impl->dropAtLinkedListAction->setEnabled(false);
     impl->insertAtTheEndDoubleLinkedListAction->setEnabled(false);
+    impl->insertAtTheBeginningDoubleLinkedListAction->setEnabled(false);
     impl->dropAtDoubleLinkedListAction->setEnabled(false);
     impl->dropAtTheEndLinkedListAction->setEnabled(false);
 }

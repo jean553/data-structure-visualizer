@@ -99,6 +99,14 @@ private slots:
     void insertAtTheEndDoubleLinkedList();
 
     /**
+     * @brief called by the double linked list menu insert at the beginning action;
+     * displays the popup that asks for the double linked list value to insert
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void insertAtTheBeginningDoubleLinkedList();
+
+    /**
      * @brief called by the double linked list menu drop at action;
      * displays the popup that asks for the double linked list node to remove
      *
