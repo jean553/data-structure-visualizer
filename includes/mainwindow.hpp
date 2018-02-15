@@ -115,6 +115,13 @@ private slots:
     void dropAtDoubleLinkedList();
 
     /**
+     * @brief called by the array menu create action; displays the popup to specify the array size
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void createArray();
+
+    /**
      * @brief called by the hashmap menu create action;
      *
      * TODO: to define

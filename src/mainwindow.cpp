@@ -24,6 +24,7 @@ public:
 
     QMenu* linkedListMenu;
     QMenu* doubleLinkedListMenu;
+    QMenu* arrayMenu;
     QMenu* hashmapMenu;
 
     QAction* createLinkedListAction;
@@ -38,6 +39,8 @@ public:
     QAction* insertAtTheBeginningDoubleLinkedListAction;
     QAction* insertAtTheEndDoubleLinkedListAction;
     QAction* dropAtDoubleLinkedListAction;
+
+    QAction* createArrayAction;
 
     QAction* createHashmapAction;
 
@@ -95,6 +98,8 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& insertAtTheEndDoubleLinkedListAction =
         impl->insertAtTheEndDoubleLinkedListAction;
     auto& dropAtDoubleLinkedListAction = impl->dropAtDoubleLinkedListAction;
+
+    auto& createArrayAction = impl->createArrayAction;
 
     auto& createHashmapAction = impl->createHashmapAction;
 
@@ -186,6 +191,14 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(dropAtDoubleLinkedList())
     );
 
+    createArrayAction = new QAction("Create");
+    connect(
+        createArrayAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(createArray())
+    );
+
     createHashmapAction = new QAction("Create");
     connect(
         createHashmapAction,
@@ -210,6 +223,10 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     doubleLinkedListMenu->addAction(insertAtTheBeginningDoubleLinkedListAction);
     doubleLinkedListMenu->addAction(insertAtTheEndDoubleLinkedListAction);
     doubleLinkedListMenu->addAction(dropAtDoubleLinkedListAction);
+
+    auto& arrayMenu = impl->arrayMenu;
+    arrayMenu = menuBar()->addMenu("Array");
+    arrayMenu->addAction(createArrayAction);
 
     auto& hashmapMenu = impl->hashmapMenu;
     hashmapMenu = menuBar()->addMenu("Hashmap");
@@ -577,6 +594,31 @@ void MainWindow::dropAtDoubleLinkedList()
 /**
  *
  */
+void MainWindow::createArray()
+{
+    bool set {false};
+
+    const int size = QInputDialog::getInt(
+        this,
+        "Array",
+        "Fixed size of the array:",
+        DEFAULT_VALUE,
+        MINIMUM_VALUE,
+        MAXIMUM_VALUE,
+        STEP,
+        &set
+    );
+
+    if (!set) {
+        return;
+    }
+
+    /* FIXME: rendering */
+}
+
+/**
+ *
+ */
 void MainWindow::createHashmap()
 {
     bool set {false};
@@ -609,6 +651,7 @@ void MainWindow::initializeMenusOptions()
 {
     impl->createLinkedListAction->setEnabled(true);
     impl->createDoubleLinkedListAction->setEnabled(true);
+    impl->createArrayAction->setEnabled(true);
 
     impl->insertAtTheEndLinkedListAction->setEnabled(false);
     impl->insertAtTheBeginningLinkedListAction->setEnabled(false);
