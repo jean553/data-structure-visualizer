@@ -17,6 +17,13 @@ public:
      */
     ~ArrayHandler();
 
+    /**
+     * @brief allocate the array with the given size
+     *
+     * @param size the size of the array to allocate
+     */
+    void createArray(const int& size) const & noexcept;
+
 private:
 
     class Impl;
