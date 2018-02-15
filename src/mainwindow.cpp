@@ -619,14 +619,18 @@ void MainWindow::createArray()
         return;
     }
 
-    impl->arrayHandler.createArray(size);
+    const auto& arrayHandler = impl->arrayHandler;
+    arrayHandler.createArray(size);
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
     impl->createArrayAction->setEnabled(false);
     impl->createHashmapAction->setEnabled(false);
 
-    /* FIXME: rendering */
+    ::renderArray(
+        impl->scene,
+        &arrayHandler
+    );
 }
 
 /**

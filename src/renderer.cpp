@@ -3,6 +3,7 @@
 #include "lineitem.hpp"
 #include "linkedlisthandler.hpp"
 #include "doublelinkedlisthandler.hpp"
+#include "arrayhandler.hpp"
 
 #include <QGraphicsScene>
 #include <QPointer>
@@ -76,3 +77,13 @@ template void render<DoubleLinkedListHandler>(
     QGraphicsScene* scene,
     DoubleLinkedListHandler* structure
 );
+
+/**
+ *
+ */
+void renderArray(
+    const QGraphicsScene* scene,
+    const ArrayHandler* arrayHandler
+)
+{
+}
