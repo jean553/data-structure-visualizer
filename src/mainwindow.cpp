@@ -5,6 +5,7 @@
 #include "linkedlisthandler.hpp"
 #include "doublelinkedlisthandler.hpp"
 #include "hashmaphandler.hpp"
+#include "arrayhandler.hpp"
 
 #include <QMenuBar>
 #include <QMenu>
@@ -50,6 +51,7 @@ public:
     LinkedListHandler linkedListHandler;
     DoubleLinkedListHandler doubleLinkedListHandler;
     HashmapHandler hashmapHandler;
+    ArrayHandler arrayHandler;
 };
 
 /**
