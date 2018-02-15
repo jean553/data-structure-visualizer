@@ -604,12 +604,13 @@ void MainWindow::createArray()
 {
     bool set {false};
 
+    constexpr int ARRAY_SIZE_MINIMUM_VALUE {1}; 
     const int size = QInputDialog::getInt(
         this,
         "Array",
         "Fixed size of the array:",
         DEFAULT_VALUE,
-        MINIMUM_VALUE,
+        ARRAY_SIZE_MINIMUM_VALUE,
         MAXIMUM_VALUE,
         STEP,
         &set
@@ -619,14 +620,18 @@ void MainWindow::createArray()
         return;
     }
 
-    impl->arrayHandler.createArray(size);
+    const auto& arrayHandler = impl->arrayHandler;
+    arrayHandler.createArray(static_cast<std::size_t>(size));
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
     impl->createArrayAction->setEnabled(false);
     impl->createHashmapAction->setEnabled(false);
 
-    /* FIXME: rendering */
+    ::renderArray(
+        impl->scene,
+        &arrayHandler
+    );
 }
 
 /**
