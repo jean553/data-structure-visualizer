@@ -22,7 +22,7 @@ public:
      *
      * @param size the size of the array to allocate
      */
-    void createArray(const int& size) const & noexcept;
+    void createArray(const unsigned int& size) const & noexcept;
 
 private:
 
