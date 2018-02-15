@@ -122,6 +122,13 @@ private slots:
     void createArray();
 
     /**
+     * @brief called by the array menu drop action; removed the whole array
+     *
+     * not const as the dialog creation modifies the main window
+     */
+    void dropArray();
+
+    /**
      * @brief called by the hashmap menu create action;
      *
      * TODO: to define

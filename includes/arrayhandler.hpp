@@ -25,6 +25,11 @@ public:
     void createArray(const std::size_t size) const & noexcept;
 
     /**
+     * @brief free the allocated array
+     */
+    void dropArray() const & noexcept;
+
+    /**
      * @brief returns the array current items amount
      *
      * @return std::size_t

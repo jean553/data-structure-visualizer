@@ -42,6 +42,7 @@ public:
     QAction* dropAtDoubleLinkedListAction;
 
     QAction* createArrayAction;
+    QAction* dropArrayAction;
 
     QAction* createHashmapAction;
 
@@ -102,6 +103,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& dropAtDoubleLinkedListAction = impl->dropAtDoubleLinkedListAction;
 
     auto& createArrayAction = impl->createArrayAction;
+    auto& dropArrayAction = impl->dropArrayAction;
 
     auto& createHashmapAction = impl->createHashmapAction;
 
@@ -193,12 +195,20 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
         SLOT(dropAtDoubleLinkedList())
     );
 
-    createArrayAction = new QAction("Create");
+    createArrayAction = new QAction("Create (malloc)");
     connect(
         createArrayAction,
         SIGNAL(triggered()),
         this,
         SLOT(createArray())
+    );
+
+    dropArrayAction = new QAction("Drop (free)");
+    connect(
+        dropArrayAction,
+        SIGNAL(triggered()),
+        this,
+        SLOT(dropArray())
     );
 
     createHashmapAction = new QAction("Create");
@@ -229,6 +239,7 @@ MainWindow::MainWindow() : impl(std::make_unique<Impl>())
     auto& arrayMenu = impl->arrayMenu;
     arrayMenu = menuBar()->addMenu("Array");
     arrayMenu->addAction(createArrayAction);
+    arrayMenu->addAction(dropArrayAction);
 
     auto& hashmapMenu = impl->hashmapMenu;
     hashmapMenu = menuBar()->addMenu("Hashmap");
@@ -625,13 +636,27 @@ void MainWindow::createArray()
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
-    impl->createArrayAction->setEnabled(false);
     impl->createHashmapAction->setEnabled(false);
+
+    impl->createArrayAction->setEnabled(false);
+    impl->dropArrayAction->setEnabled(true);
 
     ::renderArray(
         impl->scene,
         &arrayHandler
     );
+}
+
+/**
+ *
+ */
+void MainWindow::dropArray()
+{
+    impl->arrayHandler.dropArray();
+
+    initializeMenusOptions();
+
+    impl->scene->clear();
 }
 
 /**
@@ -680,4 +705,5 @@ void MainWindow::initializeMenusOptions()
     impl->insertAtTheBeginningDoubleLinkedListAction->setEnabled(false);
     impl->dropAtDoubleLinkedListAction->setEnabled(false);
     impl->dropAtTheEndLinkedListAction->setEnabled(false);
+    impl->dropArrayAction->setEnabled(false);
 }

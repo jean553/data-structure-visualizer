@@ -42,6 +42,16 @@ void ArrayHandler::createArray(const std::size_t size) const & noexcept
 /**
  *
  */
+void ArrayHandler::dropArray() const & noexcept
+{
+    free(impl->array);
+
+    impl->amount = 0;
+}
+
+/**
+ *
+ */
 std::size_t ArrayHandler::getAmount() const & noexcept
 {
     return impl->amount;
