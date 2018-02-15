@@ -275,6 +275,8 @@ void MainWindow::createLinkedList()
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
+    impl->createArrayAction->setEnabled(false);
+    impl->createHashmapAction->setEnabled(false);
 
     impl->insertAtTheEndLinkedListAction->setEnabled(true);
     impl->insertAtTheBeginningLinkedListAction->setEnabled(true);
@@ -491,6 +493,8 @@ void MainWindow::createDoubleLinkedList()
 
     impl->createLinkedListAction->setEnabled(false);
     impl->createDoubleLinkedListAction->setEnabled(false);
+    impl->createArrayAction->setEnabled(false);
+    impl->createHashmapAction->setEnabled(false);
 
     impl->insertAtTheEndDoubleLinkedListAction->setEnabled(true);
     impl->insertAtTheBeginningDoubleLinkedListAction->setEnabled(true);
@@ -616,6 +620,11 @@ void MainWindow::createArray()
     }
 
     impl->arrayHandler.createArray(size);
+
+    impl->createLinkedListAction->setEnabled(false);
+    impl->createDoubleLinkedListAction->setEnabled(false);
+    impl->createArrayAction->setEnabled(false);
+    impl->createHashmapAction->setEnabled(false);
 
     /* FIXME: rendering */
 }
