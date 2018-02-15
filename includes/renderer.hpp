@@ -30,7 +30,7 @@ void render(
  * @param arrayHandler the array handler where the array is located
  */
 void renderArray(
-    const QGraphicsScene* scene,
+    QGraphicsScene* scene,
     const ArrayHandler* arrayHandler
 );
 
