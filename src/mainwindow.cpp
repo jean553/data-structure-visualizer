@@ -615,6 +615,8 @@ void MainWindow::createArray()
         return;
     }
 
+    impl->arrayHandler.createArray(size);
+
     /* FIXME: rendering */
 }
 
