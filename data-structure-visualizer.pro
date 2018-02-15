@@ -15,6 +15,7 @@ HEADERS = includes/renderer.hpp \
     includes/lineitem.hpp \
     includes/linkedlisthandler.hpp \
     includes/doublelinkedlisthandler.hpp \
+    includes/arrayhandler.hpp \
     includes/hashmaphandler.hpp
 
 release:DESTDIR = release
@@ -45,6 +46,7 @@ SOURCES += src/main.cpp \
     src/lineitem.cpp \
     src/linkedlisthandler.cpp \
     src/doublelinkedlisthandler.cpp \
+    src/arrayhandler.cpp \
     src/hashmaphandler.cpp
 QT += widgets
 CONFIG += c++14
