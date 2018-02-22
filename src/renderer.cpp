@@ -1,12 +1,12 @@
 #include "renderer.hpp"
 #include "linkedlistitem.hpp"
-#include "lineitem.hpp"
 #include "linkedlisthandler.hpp"
 #include "doublelinkedlisthandler.hpp"
 #include "arrayhandler.hpp"
 
 #include <QGraphicsScene>
 #include <QPointer>
+#include <QGraphicsLineItem>
 
 /**
  *
@@ -46,12 +46,11 @@ void render(
 
         if (not lastItem.isNull())
         {
-            LineItem* line = new LineItem(
+            QGraphicsLineItem* itemConnector = structure->getConnectorFromItems(
                 lastItem,
                 item
             );
-
-            scene->addItem(line);
+            scene->addItem(itemConnector);
         }
 
         scene->addItem(item);

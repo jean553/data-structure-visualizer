@@ -95,3 +95,16 @@ unsigned int DoubleLinkedListHandler::getData(
         index
     );
 }
+
+/**
+ *
+ */
+ArrowLineItem* DoubleLinkedListHandler::getConnectorFromItems(
+    const QGraphicsItem* const firstItem,
+    const QGraphicsItem* const secondItem
+)
+{
+    ArrowLineItem* connector = new ArrowLineItem(firstItem, secondItem);
+    connector->enableStartArrowHead(true);
+    return connector;
+}

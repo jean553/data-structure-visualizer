@@ -30,3 +30,14 @@ void HashmapHandler::createHashmap(const unsigned short& size)
 {
     impl->hashmap = createHM(size);
 }
+
+/**
+ *
+ */
+ArrowLineItem* HashmapHandler::getConnectorFromItems(
+    const QGraphicsItem* const firstItem,
+    const QGraphicsItem* const secondItem
+)
+{
+    return new ArrowLineItem(firstItem, secondItem);
+}

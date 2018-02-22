@@ -64,3 +64,14 @@ int ArrayHandler::getData(const std::size_t index) const & noexcept
 {
     return impl->array[index];
 }
+
+/**
+ *
+ */
+LineItem* ArrayHandler::getConnectorFromItems(
+    const QGraphicsItem* const firstItem,
+    const QGraphicsItem* const secondItem
+)
+{
+    return new LineItem(firstItem, secondItem);
+}

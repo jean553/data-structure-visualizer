@@ -13,6 +13,7 @@ HEADERS = includes/renderer.hpp \
     includes/insertdialog.hpp \
     includes/linkedlistitem.hpp \
     includes/lineitem.hpp \
+    includes/arrowlineitem.hpp \
     includes/linkedlisthandler.hpp \
     includes/doublelinkedlisthandler.hpp \
     includes/arrayhandler.hpp \
@@ -44,6 +45,7 @@ SOURCES += src/main.cpp \
     src/insertdialog.cpp \
     src/linkedlistitem.cpp \
     src/lineitem.cpp \
+    src/arrowlineitem.cpp \
     src/linkedlisthandler.cpp \
     src/doublelinkedlisthandler.cpp \
     src/arrayhandler.cpp \
