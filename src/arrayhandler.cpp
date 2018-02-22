@@ -26,7 +26,7 @@ ArrayHandler::~ArrayHandler() = default;
 void ArrayHandler::createArray(const std::size_t size) const & noexcept
 {
     auto& array = impl->array;
-    array = static_cast<int*>(malloc(size * sizeof(int)));
+    array = new int[size];
 
     impl->amount = size;
 
