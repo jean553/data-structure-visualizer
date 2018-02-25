@@ -2,6 +2,7 @@
 #define RENDERER_H_
 
 class LinkedListHandler;
+class ArrayHandler;
 class QGraphicsScene;
 
 /**
@@ -19,6 +20,18 @@ template<typename T>
 void render(
     QGraphicsScene* scene,
     T* structure
+);
+
+/**
+ * @brief clears the scene and renders the array of the given array handler,
+ * pass the whole array handler as size is necessary (the array is a raw array)
+ *
+ * @param scene the scene to use for rendering
+ * @param arrayHandler the array handler where the array is located
+ */
+void renderArray(
+    QGraphicsScene* scene,
+    const ArrayHandler* arrayHandler
 );
 
 #endif
