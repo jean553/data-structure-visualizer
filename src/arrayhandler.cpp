@@ -26,7 +26,7 @@ ArrayHandler::~ArrayHandler() = default;
 void ArrayHandler::createArray(const std::size_t size) const & noexcept
 {
     auto& array = impl->array;
-    array = static_cast<int*>(malloc(size * sizeof(int)));
+    array = new int[size];
 
     impl->amount = size;
 
@@ -63,4 +63,15 @@ std::size_t ArrayHandler::getAmount() const & noexcept
 int ArrayHandler::getData(const std::size_t index) const & noexcept
 {
     return impl->array[index];
+}
+
+/**
+ *
+ */
+LineItem* ArrayHandler::getConnectorFromItems(
+    const QGraphicsItem* const firstItem,
+    const QGraphicsItem* const secondItem
+)
+{
+    return new LineItem(firstItem, secondItem);
 }

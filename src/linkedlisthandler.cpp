@@ -1,8 +1,7 @@
 #include "linkedlisthandler.hpp"
 #include "linkedlistitem.hpp"
-#include "lineitem.hpp"
-
 #include "linked_list.h"
+#include "arrowlineitem.hpp"
 
 #include <QPointer>
 #include <QGraphicsScene>
@@ -195,4 +194,15 @@ unsigned int LinkedListHandler::getData(
         &impl->list,
         index
     );
+}
+
+/**
+ *
+ */
+ArrowLineItem* LinkedListHandler::getConnectorFromItems(
+    const QGraphicsItem* const firstItem,
+    const QGraphicsItem* const secondItem
+)
+{
+    return  new ArrowLineItem(firstItem, secondItem);
 }

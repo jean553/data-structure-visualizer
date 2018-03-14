@@ -1,6 +1,8 @@
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
 
+#include "arrowlineitem.hpp"
+
 #include <memory>
 
 struct LinkedList;
@@ -107,6 +109,18 @@ public:
      */
     unsigned int getData(const unsigned short& index) const & noexcept;
 
+    /**
+     * @brief get the graphical connector of two consecutive items of the list
+     *
+     * @param firstItem garphical item of the list
+     * @param secondItem garphical item of the list right after firstItem
+     * 
+     * @return ArrowLineItem*
+     */
+    static ArrowLineItem* getConnectorFromItems(
+        const QGraphicsItem* const firstItem,
+        const QGraphicsItem* const secondItem
+    );
 private:
 
     class Impl;

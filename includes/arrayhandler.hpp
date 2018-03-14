@@ -1,7 +1,12 @@
 #ifndef ARRAYHANDLER_H_
 #define ARRAYHANDLER_H_
 
+#include "lineitem.hpp"
+
 #include <memory>
+
+
+class QGraphicsLineItem;
 
 class ArrayHandler {
 
@@ -44,6 +49,19 @@ public:
      * @return int
      */
     int getData(const std::size_t index) const & noexcept;
+
+    /**
+     * @brief get the graphical connector of two consecutive items of the array
+     *
+     * @param firstItem garphical item of the array
+     * @param secondItem garphical item of the array right after firstItem
+     * 
+     * @returns LineItem*
+     */
+    static LineItem* getConnectorFromItems(
+        const QGraphicsItem* const firstItem,
+        const QGraphicsItem* const secondItem
+    );
 
 private:
 
